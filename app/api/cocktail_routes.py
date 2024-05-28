@@ -1,5 +1,3 @@
-
-
 from flask import Blueprint, request, jsonify
 import requests
 from flask_login import current_user, login_required
@@ -37,12 +35,14 @@ def create_cocktail():
         name = form.name.data
         description = form.description.data
         instructions = form.instructions.data
+        image_url = form.image_url.data 
         ingredients_data = form.ingredients.data
 
         cocktail = Cocktail(
             name=name,
             description=description,
             instructions=instructions,
+            image_url=image_url, 
             created_by=current_user.id
         )
 

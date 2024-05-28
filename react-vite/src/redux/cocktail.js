@@ -13,7 +13,7 @@ export const createCocktail = (cocktailData) => async (dispatch) => {
     dispatch(addCocktail(data));
     return data;
   } else {
-    // Handle errors
+   
     const errors = await response.json();
     console.error(errors);
   }

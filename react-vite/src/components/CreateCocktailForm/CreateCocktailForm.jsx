@@ -6,6 +6,7 @@ const CreateCocktailForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", unit: "" },
   ]);
@@ -32,6 +33,7 @@ const CreateCocktailForm = () => {
       name,
       description,
       instructions,
+      imageUrl,
       ingredients,
     };
     dispatch(createCocktail(newCocktail, user.id));
@@ -56,6 +58,13 @@ const CreateCocktailForm = () => {
         placeholder="Instructions"
         value={instructions}
         onChange={(e) => setInstructions(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Image URL"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
         required
       />
       {ingredients.map((ingredient, index) => (
