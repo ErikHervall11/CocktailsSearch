@@ -9,7 +9,7 @@ cocktail_routes = Blueprint('cocktail', __name__)
 API_KEY = 'C7xdP9IdRuVAuUiGdsVKAA==gY0JRbhCCKum8qUU'
 API_URL = 'https://api.api-ninjas.com/v1/cocktail'
 
-@cocktail_routes.route('/search-cocktails', methods=['GET'])
+@cocktail_routes.route('/cocktail-search', methods=['GET'])
 def search_cocktails():
     name = request.args.get('name')
     ingredients = request.args.get('ingredients')
@@ -27,10 +27,11 @@ def search_cocktails():
     else:
         return jsonify({"error": response.status_code, "message": response.text}), response.status_code
 
-@cocktail_routes.route('/cocktail', methods=['POST'])
+@cocktail_routes.route('/cocktails/new', methods=['POST'])
 @login_required
 def create_cocktail():
     form = CocktailForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         name = form.name.data
         description = form.description.data

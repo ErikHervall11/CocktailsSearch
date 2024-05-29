@@ -29,11 +29,11 @@ export const router = createBrowserRouter([
         element: <CocktailSearchPage />,
       },
       {
-        path: "user-profile",
+        path: "users/:id",
         element: <UserProfilePage />,
       },
       {
-        path: "create-cocktail",
+        path: "cocktails/new",
         element: <CreateCocktailForm />,
       },
       {

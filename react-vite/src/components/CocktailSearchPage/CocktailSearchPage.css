@@ -1,3 +1,38 @@
+.cocktail-search-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cocktail-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cocktail-card h2 {
+  margin-top: 0;
+}
+
+.cocktail-card ul {
+  padding-left: 20px;
+}
+
 .search-input {
   width: 250px;
+}
+
+.search-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-toggle-buttons button {
+  width: 200px;
+  margin: 0px 10px;
 }
