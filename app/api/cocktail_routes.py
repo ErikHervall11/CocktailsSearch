@@ -9,6 +9,18 @@ cocktail_routes = Blueprint('cocktail', __name__)
 API_KEY = 'C7xdP9IdRuVAuUiGdsVKAA==gY0JRbhCCKum8qUU'
 API_URL = 'https://api.api-ninjas.com/v1/cocktail'
 
+@cocktail_routes.route('/search-cocktails', methods=['GET'])
+def search_cocktails():
+    query = request.args.get('query')
+    params = {'name': query}
+
+    response = requests.get(API_URL, headers={'X-Api-Key': API_KEY}, params=params)
+
+    if response.status_code == 200:
+        return jsonify(response.json())
+    else:
+        return jsonify({"error": response.status_code, "message": response.text}), response.status_code
+
 @cocktail_routes.route('/cocktail', methods=['GET'])
 def get_cocktail():
     name = request.args.get('name')
@@ -35,14 +47,14 @@ def create_cocktail():
         name = form.name.data
         description = form.description.data
         instructions = form.instructions.data
-        image_url = form.image_url.data 
+        image_url = form.image_url.data
         ingredients_data = form.ingredients.data
 
         cocktail = Cocktail(
             name=name,
             description=description,
             instructions=instructions,
-            image_url=image_url, 
+            image_url=image_url,
             created_by=current_user.id
         )
 
