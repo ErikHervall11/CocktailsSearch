@@ -8,13 +8,13 @@ class Cocktail(db.Model):
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     instructions = db.Column(db.Text, nullable=False)
-    image_url = db.Column(db.String(255), nullable=True) 
+    image_url = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     created_by = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     creator = db.relationship('User', back_populates='cocktails')
-    ingredients = db.relationship('CocktailIngredient', back_populates='cocktail')
+    ingredients = db.relationship('CocktailIngredient', back_populates='cocktail', cascade='all, delete-orphan')
     favorites = db.relationship('Favorite', back_populates='cocktail')
 
     def to_dict(self):

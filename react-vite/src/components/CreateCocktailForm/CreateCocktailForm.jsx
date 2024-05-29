@@ -35,8 +35,9 @@ const CreateCocktailForm = () => {
       instructions,
       imageUrl,
       ingredients,
+      created_by: user.id, // Add user ID here
     };
-    dispatch(createCocktail(newCocktail, user.id));
+    dispatch(createCocktail(newCocktail));
   };
 
   return (

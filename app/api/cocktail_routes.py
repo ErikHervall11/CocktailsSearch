@@ -6,10 +6,10 @@ from ..forms.cocktail_form import CocktailForm
 
 cocktail_routes = Blueprint('cocktail', __name__)
 
-API_KEY = 'C7xdP9IdRuVAuUiGdsVKAA==gY0JRbhCCKum8qUU'
 API_URL = 'https://api.api-ninjas.com/v1/cocktail'
+API_KEY = 'C7xdP9IdRuVAuUiGdsVKAA==gY0JRbhCCKum8qUU'
 
-@cocktail_routes.route('/cocktail-search', methods=['GET'])
+@cocktail_routes.route('/search-cocktails', methods=['GET'])
 def search_cocktails():
     name = request.args.get('name')
     ingredients = request.args.get('ingredients')

@@ -15,12 +15,10 @@ const setCocktails = (cocktails) => ({
 
 // Thunks
 export const createCocktail = (cocktailData) => async (dispatch) => {
-  // const csrfToken = getCookie('csrf_token');
-  const response = await fetch("/api/cocktail", {
+  const response = await fetch("/api/cocktails/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // 'X-CSRFToken': csrfToken,
     },
     body: JSON.stringify(cocktailData),
   });
@@ -32,11 +30,12 @@ export const createCocktail = (cocktailData) => async (dispatch) => {
   } else {
     const errors = await response.json();
     console.error(errors);
+    return errors;
   }
 };
 
 export const fetchCocktails = () => async (dispatch) => {
-  const response = await fetch("/api/cocktail");
+  const response = await fetch("/api/cocktails");
 
   if (response.ok) {
     const data = await response.json();
@@ -71,19 +70,3 @@ const cocktailReducer = (state = initialState, action) => {
 };
 
 export default cocktailReducer;
-
-// Utility Function to Get CSRF Token
-// function getCookie(name) {
-//   let cookieValue = null;
-//   if (document.cookie && document.cookie !== '') {
-//     const cookies = document.cookie.split(';');
-//     for (let i = 0; i < cookies.length; i++) {
-//       const cookie = cookies[i].trim();
-//       if (cookie.substring(0, name.length + 1) === (name + '=')) {
-//         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-//         break;
-//       }
-//     }
-//   }
-//   return cookieValue;
-// }
