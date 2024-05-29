@@ -1,15 +1,27 @@
 import { useState } from "react";
+import "./CocktailSearchPage.css";
 
 const CocktailSearchPage = () => {
-  const [query, setQuery] = useState("");
+  const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState("");
   const [cocktails, setCocktails] = useState([]);
   const [error, setError] = useState(null);
 
   const handleSearch = async (e) => {
     e.preventDefault();
 
+    const params = new URLSearchParams();
+    if (name) {
+      params.append("name", name);
+    }
+    if (ingredients) {
+      params.append("ingredients", ingredients);
+    }
+
     try {
-      const response = await fetch(`/api/search-cocktails?query=${query}`);
+      const response = await fetch(
+        `/api/search-cocktails?${params.toString()}`
+      );
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
@@ -24,16 +36,30 @@ const CocktailSearchPage = () => {
 
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1>Cocktail Search</h1>
       <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder="Search for a cocktail"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          required
-        />
-        <button type="submit">Search</button>
+        <div className="cocktail-search-box">
+          <p>Search by name</p>
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Example: 'margarita'"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </div>
+        <div className="cocktail-search-box">
+          <p>Search by ingredient</p>
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Example: 'whiskey, vermouth, bitters'"
+            value={ingredients}
+            onChange={(e) => setIngredients(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </div>
       </form>
       {error && <p>{error}</p>}
       <ul>

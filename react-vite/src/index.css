@@ -1,1 +1,7 @@
 /* TODO: Add sitewide styles */
+
+* {
+  background-color: #faefc5;
+  font-family: "Mandali", sans-serif;
+  font-weight: bold;
+}

@@ -11,18 +11,6 @@ API_URL = 'https://api.api-ninjas.com/v1/cocktail'
 
 @cocktail_routes.route('/search-cocktails', methods=['GET'])
 def search_cocktails():
-    query = request.args.get('query')
-    params = {'name': query}
-
-    response = requests.get(API_URL, headers={'X-Api-Key': API_KEY}, params=params)
-
-    if response.status_code == 200:
-        return jsonify(response.json())
-    else:
-        return jsonify({"error": response.status_code, "message": response.text}), response.status_code
-
-@cocktail_routes.route('/cocktail', methods=['GET'])
-def get_cocktail():
     name = request.args.get('name')
     ingredients = request.args.get('ingredients')
     params = {}
@@ -33,7 +21,7 @@ def get_cocktail():
         params['ingredients'] = ingredients
 
     response = requests.get(API_URL, headers={'X-Api-Key': API_KEY}, params=params)
-    
+
     if response.status_code == 200:
         return jsonify(response.json())
     else:
