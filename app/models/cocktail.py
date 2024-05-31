@@ -11,7 +11,7 @@ class Cocktail(db.Model):
     image_url = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    created_by = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    created_by = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     creator = db.relationship('User', back_populates='cocktails')
     ingredients = db.relationship('CocktailIngredient', back_populates='cocktail', cascade='all, delete-orphan')
