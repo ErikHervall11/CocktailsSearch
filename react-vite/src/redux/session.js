@@ -8,6 +8,7 @@ const getCsrfToken = () => {
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 const ADD_USER_COCKTAIL = "session/addUserCocktail";
+const DELETE_USER_COCKTAIL = "session/DELETE_USER_COCKTAIL";
 
 const addUserCocktail = (cocktail) => ({
   type: ADD_USER_COCKTAIL,
@@ -21,6 +22,11 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+});
+
+const deleteUserCocktail = (cocktailId) => ({
+  type: DELETE_USER_COCKTAIL,
+  cocktailId,
 });
 
 export const thunkAuthenticate = () => async (dispatch) => {
@@ -101,11 +107,21 @@ function sessionReducer(state = initialState, action) {
           cocktails: [...state.user.cocktails, action.payload],
         },
       };
+    case DELETE_USER_COCKTAIL:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          cocktails: state.user.cocktails.filter(
+            (cocktail) => cocktail.id !== action.cocktailId
+          ),
+        },
+      };
     default:
       return state;
   }
 }
 
-export { addUserCocktail };
+export { addUserCocktail, deleteUserCocktail };
 
 export default sessionReducer;

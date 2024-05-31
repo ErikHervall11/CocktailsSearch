@@ -1,10 +1,11 @@
-// Action Types
-import { addUserCocktail } from "./session";
+import { addUserCocktail, deleteUserCocktail } from "./session";
 
 const ADD_COCKTAIL = "cocktails/ADD_COCKTAIL";
 const SET_COCKTAILS = "cocktails/SET_COCKTAILS";
+const UPDATE_COCKTAIL = "cocktails/UPDATE_COCKTAIL";
+const DELETE_COCKTAIL = "cocktails/DELETE_COCKTAIL";
 
-// Action Creators
+// Action
 const addCocktail = (cocktail) => ({
   type: ADD_COCKTAIL,
   cocktail,
@@ -13,6 +14,16 @@ const addCocktail = (cocktail) => ({
 const setCocktails = (cocktails) => ({
   type: SET_COCKTAILS,
   cocktails,
+});
+
+const updateCocktail = (cocktail) => ({
+  type: UPDATE_COCKTAIL,
+  cocktail,
+});
+
+const deleteCocktail = (cocktailId) => ({
+  type: DELETE_COCKTAIL,
+  cocktailId,
 });
 
 // Thunks
@@ -53,6 +64,53 @@ export const fetchCocktails = () => async (dispatch) => {
   }
 };
 
+export const updateCocktailThunk =
+  (cocktailId, cocktailData) => async (dispatch) => {
+    const response = await fetch(`/api/cocktails/${cocktailId}`, {
+      method: "PUT",
+      body: cocktailData,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(updateCocktail(data));
+      return data;
+    } else {
+      const errors = await response.json();
+      console.error(errors);
+      return errors;
+    }
+  };
+
+export const deleteCocktailThunk =
+  (cocktailId) => async (dispatch, getState) => {
+    const getCsrfToken = () => {
+      const csrfCookie = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("csrf_token="));
+      return csrfCookie ? csrfCookie.split("=")[1] : null;
+    };
+
+    const response = await fetch(`/api/cocktails/${cocktailId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": getCsrfToken(),
+      },
+    });
+
+    if (response.ok) {
+      dispatch(deleteCocktail(cocktailId));
+      const user = getState().session.user;
+      if (user) {
+        dispatch(deleteUserCocktail(cocktailId));
+      }
+    } else {
+      const errors = await response.json();
+      console.error(errors);
+    }
+  };
+
 // Initial State
 const initialState = {
   cocktails: [],
@@ -70,6 +128,20 @@ const cocktailReducer = (state = initialState, action) => {
       return {
         ...state,
         cocktails: action.cocktails,
+      };
+    case UPDATE_COCKTAIL:
+      return {
+        ...state,
+        cocktails: state.cocktails.map((cocktail) =>
+          cocktail.id === action.cocktail.id ? action.cocktail : cocktail
+        ),
+      };
+    case DELETE_COCKTAIL:
+      return {
+        ...state,
+        cocktails: state.cocktails.filter(
+          (cocktail) => cocktail.id !== action.cocktailId
+        ),
       };
     default:
       return state;

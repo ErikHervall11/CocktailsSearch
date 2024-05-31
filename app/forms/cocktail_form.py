@@ -13,7 +13,7 @@ class CocktailForm(FlaskForm):
     name = StringField("Cocktail Name", validators=[DataRequired()])
     description = TextAreaField("Description", validators=[DataRequired()])
     instructions = TextAreaField("Instructions", validators=[DataRequired()])
-    image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    image = FileField("Image File", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
     ingredients = FieldList(FormField(IngredientForm), min_entries=1, validators=[DataRequired()])
     csrf_token = StringField()
     submit = SubmitField("Create Cocktail")
