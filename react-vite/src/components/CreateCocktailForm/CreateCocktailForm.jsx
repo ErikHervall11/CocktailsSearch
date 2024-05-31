@@ -6,12 +6,19 @@ const CreateCocktailForm = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [instructions, setInstructions] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [image, setImage] = useState(null);
   const [ingredients, setIngredients] = useState([
     { name: "", amount: "", unit: "" },
   ]);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+
+  const getCsrfToken = () => {
+    const csrfCookie = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("csrf_token="));
+    return csrfCookie ? csrfCookie.split("=")[1] : null;
+  };
 
   const handleAddIngredient = () => {
     setIngredients([...ingredients, { name: "", amount: "", unit: "" }]);
@@ -27,21 +34,26 @@ const CreateCocktailForm = () => {
     setIngredients(newIngredients);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const newCocktail = {
-      name,
-      description,
-      instructions,
-      imageUrl,
-      ingredients,
-      created_by: user.id, // Add user ID here
-    };
-    dispatch(createCocktail(newCocktail));
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("instructions", instructions);
+    formData.append("image", image);
+    formData.append("csrf_token", getCsrfToken());
+    formData.append("created_by", user.id);
+    ingredients.forEach((ingredient, index) => {
+      formData.append(`ingredients-${index}-name`, ingredient.name);
+      formData.append(`ingredients-${index}-amount`, ingredient.amount);
+      formData.append(`ingredients-${index}-unit`, ingredient.unit);
+    });
+
+    dispatch(createCocktail(formData));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
       <input
         type="text"
         placeholder="Cocktail Name"
@@ -62,10 +74,8 @@ const CreateCocktailForm = () => {
         required
       />
       <input
-        type="text"
-        placeholder="Image URL"
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
+        type="file"
+        onChange={(e) => setImage(e.target.files[0])}
         required
       />
       {ingredients.map((ingredient, index) => (

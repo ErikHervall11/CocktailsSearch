@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
 import requests
 from flask_login import current_user, login_required
-from ..models import db, Cocktail, CocktailIngredient, Ingredient
-from ..forms.cocktail_form import CocktailForm
+from app.models import db, Cocktail, CocktailIngredient, Ingredient
+from app.forms.cocktail_form import CocktailForm
+from app.api.AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 
 cocktail_routes = Blueprint('cocktail', __name__)
 
@@ -31,13 +32,28 @@ def search_cocktails():
 @login_required
 def create_cocktail():
     form = CocktailForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    print("Request Form Data:", request.form)
+    print("Request Files:", request.files)
+    print('Form Ingredients Data:', form.ingredients.data)
+    print('Form Errors Before Validation:', form.errors)
+
     if form.validate_on_submit():
+        print("Form Validated Successfully")
         name = form.name.data
         description = form.description.data
         instructions = form.instructions.data
-        image_url = form.image_url.data
+        image = form.image.data
         ingredients_data = form.ingredients.data
+        
+        if image:
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            if "url" not in upload:
+                return jsonify({"errors": "Failed to upload image"}), 400
+            image_url = upload["url"]
+        else:
+            image_url = None
 
         cocktail = Cocktail(
             name=name,
@@ -73,4 +89,5 @@ def create_cocktail():
 
         return jsonify(cocktail.to_dict()), 201
     else:
+        print("Form Errors After Validation:", form.errors)
         return jsonify({'errors': form.errors}), 400

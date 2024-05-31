@@ -15,12 +15,11 @@ const setCocktails = (cocktails) => ({
 
 // Thunks
 export const createCocktail = (cocktailData) => async (dispatch) => {
+  // console.log("FormData entries:", [...cocktailData.entries()]);
+
   const response = await fetch("/api/cocktails/new", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(cocktailData),
+    body: cocktailData,
   });
 
   if (response.ok) {
