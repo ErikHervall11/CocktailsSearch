@@ -5,7 +5,7 @@ const CocktailSearchPage = () => {
   const [searchType, setSearchType] = useState("");
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [cocktails, setCocktails] = useState([]);
+  // const [cocktails, setCocktails] = useState([]);
   const [error, setError] = useState(null);
 
   const handleSearch = async (e) => {
@@ -82,7 +82,7 @@ const CocktailSearchPage = () => {
         </form>
       </div>
       {error && <p>{error}</p>}
-      <div className="cocktail-search-container">
+      {/* <div className="cocktail-search-container">
         {cocktails.map((cocktail, index) => (
           <div key={index} className="cocktail-card">
             <h2>{cocktail.name}</h2>
@@ -94,7 +94,7 @@ const CocktailSearchPage = () => {
             </ul>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
