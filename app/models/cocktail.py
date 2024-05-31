@@ -1,4 +1,4 @@
-from .db import db
+from .db import db, add_prefix_for_prod
 from datetime import datetime
 
 class Cocktail(db.Model):
