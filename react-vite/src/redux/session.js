@@ -1,5 +1,18 @@
+const getCsrfToken = () => {
+  const csrfCookie = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("csrf_token="));
+  return csrfCookie ? csrfCookie.split("=")[1] : null;
+};
+
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
+const ADD_USER_COCKTAIL = "session/addUserCocktail";
+
+const addUserCocktail = (cocktail) => ({
+  type: ADD_USER_COCKTAIL,
+  payload: cocktail,
+});
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -23,9 +36,11 @@ export const thunkAuthenticate = () => async (dispatch) => {
 };
 
 export const thunkLogin = (credentials) => async (dispatch) => {
+  const csrfToken = getCsrfToken();
   const response = await fetch("/api/auth/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": csrfToken },
+
     body: JSON.stringify(credentials),
   });
 
@@ -41,9 +56,10 @@ export const thunkLogin = (credentials) => async (dispatch) => {
 };
 
 export const thunkSignup = (user) => async (dispatch) => {
+  const csrfToken = getCsrfToken();
   const response = await fetch("/api/auth/signup", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": csrfToken },
     body: JSON.stringify(user),
   });
 
@@ -59,7 +75,13 @@ export const thunkSignup = (user) => async (dispatch) => {
 };
 
 export const thunkLogout = () => async (dispatch) => {
-  await fetch("/api/auth/logout");
+  const csrfToken = getCsrfToken();
+  await fetch("/api/auth/logout", {
+    method: "POST",
+    headers: {
+      "X-CSRF-TOKEN": csrfToken,
+    },
+  });
   dispatch(removeUser());
 };
 
@@ -71,9 +93,19 @@ function sessionReducer(state = initialState, action) {
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
+    case ADD_USER_COCKTAIL:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          cocktails: [...state.user.cocktails, action.payload],
+        },
+      };
     default:
       return state;
   }
 }
+
+export { addUserCocktail };
 
 export default sessionReducer;

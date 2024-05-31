@@ -49,7 +49,20 @@ const CreateCocktailForm = () => {
       formData.append(`ingredients-${index}-unit`, ingredient.unit);
     });
 
-    dispatch(createCocktail(formData));
+    const result = await dispatch(createCocktail(formData));
+
+    if (!result.errors) {
+      // Clear the form after successful creation
+      setName("");
+      setDescription("");
+      setInstructions("");
+      setImage(null);
+      setIngredients([{ name: "", amount: "", unit: "" }]);
+      // Optional: Display success message or redirect
+    } else {
+      // Optional: Handle errors (display error messages)
+      console.error(result.errors);
+    }
   };
 
   return (
