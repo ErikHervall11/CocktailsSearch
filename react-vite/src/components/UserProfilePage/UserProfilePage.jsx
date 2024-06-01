@@ -42,6 +42,8 @@ const UserProfilePage = () => {
               <h2>{cocktail.name}</h2>
               <p>{cocktail.description}</p>
               <p>{cocktail.instructions}</p>
+              {/* <p>{cocktail.ingredients}</p> */}
+              {/* <p>{cocktail.instructions}</p> */}
               <button onClick={() => handleEdit(cocktail)}>Edit</button>
               <button onClick={() => openDeleteModal(cocktail)}>Delete</button>
             </div>

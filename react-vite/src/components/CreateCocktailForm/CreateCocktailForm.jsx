@@ -24,6 +24,10 @@ const CreateCocktailForm = () => {
     setIngredients([...ingredients, { name: "", amount: "", unit: "" }]);
   };
 
+  const handleRemoveIngredient = (index) => {
+    setIngredients(ingredients.filter((_, i) => i !== index));
+  };
+
   const handleIngredientChange = (index, field, value) => {
     const newIngredients = ingredients.map((ingredient, i) => {
       if (i === index) {
@@ -123,6 +127,9 @@ const CreateCocktailForm = () => {
             }
             required
           />
+          <button type="button" onClick={() => handleRemoveIngredient(index)}>
+            Remove
+          </button>
         </div>
       ))}
       <button type="button" onClick={handleAddIngredient}>

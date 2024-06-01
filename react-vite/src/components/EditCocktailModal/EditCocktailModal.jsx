@@ -37,6 +37,10 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
     setIngredients(newIngredients);
   };
 
+  const handleRemoveIngredient = (index) => {
+    setIngredients(ingredients.filter((_, i) => i !== index));
+  };
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -134,6 +138,12 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
                 }
                 required
               />
+              <button
+                type="button"
+                onClick={() => handleRemoveIngredient(index)}
+              >
+                Remove
+              </button>
             </div>
           ))}
           <button type="submit">Update Cocktail</button>
