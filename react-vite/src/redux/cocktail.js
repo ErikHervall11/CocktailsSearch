@@ -111,6 +111,21 @@ export const deleteCocktailThunk =
     }
   };
 
+export const fetchCocktailById = (id) => async (dispatch) => {
+  try {
+    const response = await fetch(`/api/cocktails/${id}`);
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(addCocktail(data));
+    } else {
+      const errors = await response.json();
+      console.error("Errors:", errors);
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+  }
+};
+
 // Initial State
 const initialState = {
   cocktails: [],

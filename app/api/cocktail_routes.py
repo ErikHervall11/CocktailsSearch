@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import requests
 from flask_login import current_user, login_required
-from app.models import db, Cocktail, CocktailIngredient, Ingredient
+from app.models import db, Cocktail, CocktailIngredient, Ingredient, Comment
 from app.forms.cocktail_form import CocktailForm
 from app.api.AWS_helpers import (
     upload_file_to_s3,
@@ -190,3 +190,19 @@ def delete_cocktail(id):
     db.session.delete(cocktail)
     db.session.commit()
     return jsonify({'message': 'Cocktail deleted'}), 200
+
+
+###############################################
+#############Get Comments     ################# 
+###############################################
+
+
+@cocktail_routes.route('/cocktails/<int:id>/comments', methods=['GET'])
+def get_comments(id):
+    cocktail = Cocktail.query.get(id)
+    if not cocktail:
+        return jsonify({'error': 'Cocktail not found'}), 404
+
+    comments = Comment.query.filter_by(cocktail_id=id).all()
+    return jsonify([comment.to_dict() for comment in comments]), 200
+

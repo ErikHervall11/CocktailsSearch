@@ -37,6 +37,10 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
     setIngredients(newIngredients);
   };
 
+  const handleAddIngredient = () => {
+    setIngredients([...ingredients, { name: "", amount: "", unit: "" }]);
+  };
+
   const handleRemoveIngredient = (index) => {
     setIngredients(ingredients.filter((_, i) => i !== index));
   };
@@ -146,6 +150,9 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
               </button>
             </div>
           ))}
+          <button type="button" onClick={handleAddIngredient}>
+            Add Ingredient
+          </button>
           <button type="submit">Update Cocktail</button>
           <button type="button" onClick={onClose}>
             Cancel

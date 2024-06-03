@@ -8,6 +8,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.cocktail_routes import cocktail_routes
+from .api.comment_routes import comment_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -38,6 +39,7 @@ csrf = CSRFProtect(app)
 app.register_blueprint(user_routes, url_prefix="/api/users")
 app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(cocktail_routes, url_prefix="/api")
+app.register_blueprint(comment_routes, url_prefix="/api")
 
 # Application Security
 CORS(app)

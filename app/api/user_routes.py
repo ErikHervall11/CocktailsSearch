@@ -23,3 +23,9 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/')
+def get_users():
+    users = User.query.all()
+    return jsonify([user.simple_dict() for user in users]), 200
+

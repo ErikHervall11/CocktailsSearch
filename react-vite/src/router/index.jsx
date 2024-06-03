@@ -7,6 +7,7 @@ import UserProfilePage from "../components/UserProfilePage/UserProfilePage";
 import CreateCocktailForm from "../components/CreateCocktailForm/CreateCocktailForm";
 import Layout from "./Layout";
 import CocktailList from "../components/CocktailList/CocktailList";
+import CocktailDetailsPage from "../components/CocktailDetailsPage/CocktailDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "cocktails",
         element: <CocktailList />,
+      },
+      {
+        path: "cocktails/:id",
+        element: <CocktailDetailsPage />,
       },
     ],
   },

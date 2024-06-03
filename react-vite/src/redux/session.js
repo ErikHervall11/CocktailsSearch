@@ -9,6 +9,12 @@ const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 const ADD_USER_COCKTAIL = "session/addUserCocktail";
 const DELETE_USER_COCKTAIL = "session/DELETE_USER_COCKTAIL";
+const SET_USERS = "session/setUsers";
+
+const setUsers = (users) => ({
+  type: SET_USERS,
+  payload: users,
+});
 
 const addUserCocktail = (cocktail) => ({
   type: ADD_USER_COCKTAIL,
@@ -28,6 +34,8 @@ const deleteUserCocktail = (cocktailId) => ({
   type: DELETE_USER_COCKTAIL,
   cocktailId,
 });
+
+//THUNKS
 
 export const thunkAuthenticate = () => async (dispatch) => {
   const response = await fetch("/api/auth/");
@@ -65,8 +73,8 @@ export const thunkSignup = (user) => async (dispatch) => {
   const csrfToken = getCsrfToken();
   const response = await fetch("/api/auth/signup", {
     method: "POST",
-    headers: { "Content-Type": "application/json", "X-CSRF-TOKEN": csrfToken },
-    body: JSON.stringify(user),
+    headers: { "X-CSRF-TOKEN": csrfToken },
+    body: user,
   });
 
   if (response.ok) {
@@ -91,7 +99,18 @@ export const thunkLogout = () => async (dispatch) => {
   dispatch(removeUser());
 };
 
-const initialState = { user: null };
+export const fetchUsers = () => async (dispatch) => {
+  const response = await fetch("/api/users/");
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUsers(data));
+  }
+};
+
+const initialState = {
+  user: null,
+  users: [],
+};
 
 function sessionReducer(state = initialState, action) {
   switch (action.type) {
@@ -99,6 +118,8 @@ function sessionReducer(state = initialState, action) {
       return { ...state, user: action.payload };
     case REMOVE_USER:
       return { ...state, user: null };
+    case SET_USERS:
+      return { ...state, users: action.payload };
     case ADD_USER_COCKTAIL:
       return {
         ...state,
