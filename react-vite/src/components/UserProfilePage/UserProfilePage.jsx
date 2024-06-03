@@ -56,12 +56,12 @@ const UserProfilePage = () => {
       <div className="profile-header">
         <img
           src={user.profile_image}
-          alt={user.username}
+          alt="Profile Image"
           className="profile-image"
         />
         <h1>{user.username}&apos;s Profile</h1>
       </div>
-      <h2>Created Cocktails</h2>
+      <h2>My Cocktails</h2>
       <div className="cocktail-grid">
         {cocktails.map((cocktail) => (
           <div key={cocktail.id} className="cocktail-card">

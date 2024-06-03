@@ -1,5 +1,6 @@
 .profile-dropdown {
   position: absolute;
+  z-index: 1;
 }
 
 .logo {
@@ -23,12 +24,28 @@
 }
 
 .profile-button {
-  height: 50px;
+  height: 30px;
   border-radius: 50%;
 }
 
 .profile-dropdown-button {
   cursor: pointer;
+  border-radius: 10px;
+}
+.profile-dropdown-button:hover {
+  background-color: #04353e;
+  color: #fdf2c7;
+}
+
+.login-signup-buttons {
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #04353e;
+  padding: 0px 5px;
+}
+.login-signup-buttons:hover {
+  background-color: #04353e;
+  color: #fdf2c7;
 }
 
 .menu-button {
