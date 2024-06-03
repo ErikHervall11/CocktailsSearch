@@ -6,7 +6,7 @@
 }
 
 .cocktail-card {
-  border: 1px solid #ccc;
+  border: 1px solid #04353e;
   border-radius: 10px;
   padding: 15px;
   width: 300px;
@@ -30,6 +30,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 25px;
 }
 
 .search-toggle-buttons button {

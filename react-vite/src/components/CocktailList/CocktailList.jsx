@@ -27,12 +27,12 @@ const CocktailList = () => {
     <div>
       <h1>Cocktail List</h1>
       <div className="cocktail-grid">
-        {sortedCocktails.map((cocktail) => {
+        {sortedCocktails.map((cocktail, index) => {
           const creator = users.find((user) => user.id === cocktail.created_by);
           return (
             <Link
               to={`/cocktails/${cocktail.id}`}
-              key={cocktail.id}
+              key={index}
               className="cocktail-card"
             >
               <img src={cocktail.image_url} alt={cocktail.name} />

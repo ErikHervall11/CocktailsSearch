@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCocktail } from "../../redux/cocktail";
+import "./CreateCocktailForm.css";
 
 const CreateCocktailForm = () => {
   const [name, setName] = useState("");
@@ -70,33 +71,41 @@ const CreateCocktailForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
+    <form
+      onSubmit={handleSubmit}
+      encType="multipart/form-data"
+      className="create-cocktail-form"
+    >
       <input
         type="text"
         placeholder="Cocktail Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
+        className="form-input"
       />
       <textarea
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         required
+        className="form-textarea"
       />
       <textarea
         placeholder="Instructions"
         value={instructions}
         onChange={(e) => setInstructions(e.target.value)}
         required
+        className="form-textarea"
       />
       <input
         type="file"
         onChange={(e) => setImage(e.target.files[0])}
         required
+        className="form-input"
       />
       {ingredients.map((ingredient, index) => (
-        <div key={index}>
+        <div key={index} className="ingredient-row">
           <input
             type="text"
             name="name"
@@ -106,6 +115,7 @@ const CreateCocktailForm = () => {
               handleIngredientChange(index, "name", e.target.value)
             }
             required
+            className="form-input ingredient-input"
           />
           <input
             type="text"
@@ -116,6 +126,7 @@ const CreateCocktailForm = () => {
               handleIngredientChange(index, "amount", e.target.value)
             }
             required
+            className="form-input ingredient-input"
           />
           <input
             type="text"
@@ -126,16 +137,27 @@ const CreateCocktailForm = () => {
               handleIngredientChange(index, "unit", e.target.value)
             }
             required
+            className="form-input ingredient-input"
           />
-          <button type="button" onClick={() => handleRemoveIngredient(index)}>
+          <button
+            type="button"
+            onClick={() => handleRemoveIngredient(index)}
+            className="remove-button"
+          >
             Remove
           </button>
         </div>
       ))}
-      <button type="button" onClick={handleAddIngredient}>
+      <button
+        type="button"
+        onClick={handleAddIngredient}
+        className="add-button"
+      >
         Add Ingredient
       </button>
-      <button type="submit">Create Cocktail</button>
+      <button type="submit" className="submit-button">
+        Create Cocktail
+      </button>
     </form>
   );
 };

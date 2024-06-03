@@ -1,0 +1,81 @@
+/* CreateCocktailForm.css */
+.create-cocktail-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #04353e;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgb(4, 53, 62, 0.8);
+  background-color: #fdf2c7;
+}
+
+.create-cocktail-form .form-input,
+.create-cocktail-form .form-textarea,
+.create-cocktail-form .submit-button,
+.create-cocktail-form .add-button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 7px;
+  border: 1px solid #04353e;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.create-cocktail-form .form-textarea {
+  resize: none;
+  height: 80px;
+}
+
+.create-cocktail-form .submit-button,
+.create-cocktail-form .add-button {
+  width: auto;
+  background-color: #04353e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-cocktail-form .submit-button:hover,
+.create-cocktail-form .add-button:hover {
+  background-color: #04353ed0;
+  color: #fff;
+  transition: background-color 0.4s;
+}
+
+.create-cocktail-form .ingredient-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.create-cocktail-form .ingredient-row .form-input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.create-cocktail-form .ingredient-row .form-input:last-child {
+  margin-right: 0;
+}
+
+.create-cocktail-form .remove-button {
+  width: auto;
+  background-color: #fdf2c7;
+  color: #04353e;
+  border: 1px solid #04353e;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 1px 8px;
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.create-cocktail-form .remove-button:hover {
+  background-color: #8f06069d;
+  color: #04353e;
+}

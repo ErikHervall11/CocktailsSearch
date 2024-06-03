@@ -54,7 +54,11 @@
 
 .comments-list {
   width: 100%;
-  margin-top: 20px;
+  margin: 8px 0px;
+}
+
+.comment-textarea {
+  width: 300px;
 }
 
 .comments-list li {
@@ -68,6 +72,7 @@
 }
 
 .comments-list li p {
+  background-color: #064151;
   color: #fdf2c7;
   margin: 5px 0;
 }
@@ -75,27 +80,36 @@
 .comments-list li div {
   display: flex;
   gap: 10px;
+  background-color: #064151;
+  align-items: center;
 }
 
-/* textarea {
+.details-textarea {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid #fdf2c7;
 }
 
-button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* Edit button */
+.comments-list button:first-of-type {
+  background-color: #04353e;
+  color: #fff;
 }
 
-button:hover {
-  background-color: #0056b3;
-} */
+.comments-list button:first-of-type:hover {
+  background-color: #b4990181;
+  color: #000;
+}
+
+/* Delete button */
+.comments-list button:last-of-type {
+  background-color: #04353e;
+  color: #fff;
+}
+
+.comments-list button:last-of-type:hover {
+  background-color: #8f06069d;
+  color: #000;
+}

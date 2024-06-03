@@ -108,6 +108,7 @@ const CocktailDetailsPage = () => {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Add a comment"
+            className="details-textarea"
           ></textarea>
           <button onClick={handleCreateComment}>Comment</button>
         </div>
@@ -120,6 +121,7 @@ const CocktailDetailsPage = () => {
                 <textarea
                   value={editingContent}
                   onChange={(e) => setEditingContent(e.target.value)}
+                  className="comment-textarea"
                 ></textarea>
                 <button onClick={() => handleUpdateComment(comment.id)}>
                   Update
@@ -127,10 +129,10 @@ const CocktailDetailsPage = () => {
                 <button onClick={() => setEditingComment(null)}>Cancel</button>
               </div>
             ) : (
-              <div>
+              <div className="comments-list">
                 <p>{comment.content}</p>
                 {comment.user_id === user.id && (
-                  <div>
+                  <div className="edit-delete-buttons">
                     <button onClick={() => handleEditComment(comment)}>
                       Edit
                     </button>
