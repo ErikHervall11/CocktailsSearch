@@ -16,6 +16,46 @@
   border-radius: 10px;
   width: 600px;
   box-shadow: 0px 0px 50px rgb(4, 53, 62, 0.8);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #04353e;
+  border-radius: 6px;
+  border: 3px solid #fdf2c7;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #064b57;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background-color: #fdf2c7;
+  border-radius: 6px;
+}
+
+.form-textarea::-webkit-scrollbar {
+  width: 12px;
+}
+
+.form-textarea::-webkit-scrollbar-thumb {
+  background-color: #04353e;
+  border-radius: 6px;
+  border: 3px solid #fdf2c7;
+}
+
+.form-textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #064b57;
+}
+
+.form-textarea::-webkit-scrollbar-track {
+  background-color: #fdf2c7;
+  border-radius: 6px;
 }
 
 .edit-cocktail-form {
@@ -162,4 +202,8 @@
   align-items: center;
   justify-content: center;
   width: 50%;
+}
+
+.image-preview-image img {
+  border: #04353e solid 2px;
 }
