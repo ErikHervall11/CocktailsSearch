@@ -12,7 +12,7 @@ def seed_cocktails():
             "name": "Mojito",
             "description": "A refreshing minty cocktail",
             "instructions": "Muddle mint leaves with sugar and lime juice. Add rum and top with club soda. Garnish with mint sprig.",
-            "image_url": "https://example.com/mojito.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/MojitoSeed.jpg",
             "created_by": users[0].id,
             "ingredients": [
                 {"name": "Mint Leaves", "amount": "10", "unit": "leaves"},
@@ -25,8 +25,8 @@ def seed_cocktails():
         {
             "name": "Cosmopolitan",
             "description": "A tangy and fruity cocktail",
-            "instructions": "Shake vodka, triple sec, cranberry juice, and lime juice with ice. Strain into a chilled glass and garnish with lime twist.",
-            "image_url": "https://example.com/cosmopolitan.jpg",
+            "instructions": "Shake vodka, triple sec, cranberry juice, and lime juice with ice. Strain into a chilled glass and garnish with orange twist.",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/CosmoSeed.jpg",
             "created_by": users[1].id,
             "ingredients": [
                 {"name": "Vodka", "amount": "1.5", "unit": "oz"},
@@ -39,7 +39,7 @@ def seed_cocktails():
             "name": "Pina Colada",
             "description": "A sweet tropical cocktail",
             "instructions": "Blend rum, pineapple juice, and coconut cream with ice. Pour into a glass and garnish with pineapple slice.",
-            "image_url": "https://example.com/pina_colada.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/PinaColadaSeed.jpg",
             "created_by": users[2].id,
             "ingredients": [
                 {"name": "Rum", "amount": "2", "unit": "oz"},
@@ -51,7 +51,7 @@ def seed_cocktails():
             "name": "Margarita",
             "description": "A classic Mexican cocktail",
             "instructions": "Shake tequila, triple sec, and lime juice with ice. Strain into a glass with a salted rim and garnish with lime wedge.",
-            "image_url": "https://example.com/margarita.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/MargaritaSeed.jpg",
             "created_by": users[3].id,
             "ingredients": [
                 {"name": "Tequila", "amount": "2", "unit": "oz"},
@@ -63,7 +63,7 @@ def seed_cocktails():
             "name": "Old Fashioned",
             "description": "A classic whiskey cocktail",
             "instructions": "Muddle sugar and bitters with a splash of water. Add whiskey and ice. Stir and garnish with orange twist and cherry.",
-            "image_url": "https://example.com/old_fashioned.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/OldSeed.jpg",
             "created_by": users[4].id,
             "ingredients": [
                 {"name": "Whiskey", "amount": "2", "unit": "oz"},
@@ -76,7 +76,7 @@ def seed_cocktails():
             "name": "Gin and Tonic",
             "description": "A simple and refreshing cocktail",
             "instructions": "Pour gin into a glass with ice. Top with tonic water and garnish with lime wedge.",
-            "image_url": "https://example.com/gin_and_tonic.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/GTSeed.jpg",
             "created_by": users[5].id,
             "ingredients": [
                 {"name": "Gin", "amount": "2", "unit": "oz"},
@@ -87,7 +87,7 @@ def seed_cocktails():
             "name": "Negroni",
             "description": "A bitter and balanced cocktail",
             "instructions": "Stir gin, sweet vermouth, and Campari with ice. Strain into a glass and garnish with orange twist.",
-            "image_url": "https://example.com/negroni.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/NegroniSeed.jpg",
             "created_by": users[6].id,
             "ingredients": [
                 {"name": "Gin", "amount": "1", "unit": "oz"},
@@ -99,7 +99,7 @@ def seed_cocktails():
             "name": "Whiskey Sour",
             "description": "A tangy and smooth cocktail",
             "instructions": "Shake whiskey, lemon juice, and sugar syrup with ice. Strain into a glass and garnish with cherry and orange slice.",
-            "image_url": "https://example.com/whiskey_sour.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/WhiskeySourSeed.jpg",
             "created_by": users[7].id,
             "ingredients": [
                 {"name": "Whiskey", "amount": "2", "unit": "oz"},
@@ -111,7 +111,7 @@ def seed_cocktails():
             "name": "Tequila Sunrise",
             "description": "A colorful and fruity cocktail",
             "instructions": "Pour tequila and orange juice into a glass with ice. Add grenadine and let it settle. Garnish with orange slice and cherry.",
-            "image_url": "https://example.com/tequila_sunrise.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/TequilaSunriseSeed.jpg",
             "created_by": users[8].id,
             "ingredients": [
                 {"name": "Tequila", "amount": "2", "unit": "oz"},
@@ -123,7 +123,7 @@ def seed_cocktails():
             "name": "Mai Tai",
             "description": "A tropical and exotic cocktail",
             "instructions": "Shake rum, lime juice, triple sec, and orgeat syrup with ice. Strain into a glass with ice and garnish with mint sprig.",
-            "image_url": "https://example.com/mai_tai.jpg",
+            "image_url": "https://cocktail-collective.s3.us-west-1.amazonaws.com/MaiTaiSeed.jpg",
             "created_by": users[9].id,
             "ingredients": [
                 {"name": "Rum", "amount": "1.5", "unit": "oz"},

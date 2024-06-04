@@ -13,12 +13,153 @@
 .modal-content {
   background-color: #fdf2c7;
   padding: 20px;
+  border-radius: 10px;
+  width: 600px;
+  box-shadow: 0px 0px 50px rgb(4, 53, 62, 0.8);
+}
+
+.edit-cocktail-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-input,
+.form-textarea,
+.submit-button,
+.add-button,
+.cancel-button,
+.form-input-name {
+  width: 60%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #04353e;
   border-radius: 5px;
-  width: 500px;
+  font-size: 16px;
+}
+
+.update-cancel button {
+  margin: 0px 10px;
+}
+
+.form-input {
+  width: 50%;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form-textarea {
+  resize: none;
+  height: 80px;
+  width: 48%;
+}
+
+.submit-button,
+.add-button,
+.cancel-button {
+  width: auto;
+  background-color: #04353e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: #b4990181;
+  color: #04353e;
+  transition: background-color 0.4s;
+}
+
+.submit-button:hover {
+  background-color: green;
+  color: white;
+  transition: background-color 0.4s;
+}
+
+.cancel-button:hover {
+  background-color: #8f06069d;
+  color: #04353e;
+  transition: background-color 0.4s;
+}
+
+.ingredient-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.modal-content p {
+  text-align: center;
+}
+
+.form-textarea:focus,
+.form-input:focus,
+.form-input-name:focus {
+  outline: none;
+  border: #04353e solid 2px;
+  background-color: #f0e0a3;
+}
+
+.ingredient-row .form-input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.ingredient-row .form-input:last-child {
+  margin-right: 0;
+}
+
+.remove-button {
+  width: auto;
+  background-color: #fdf2c7;
+  color: #04353e;
+  border: 1px solid #04353e;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 1px 8px;
+  border-radius: 5px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.remove-button:hover {
+  background-color: #8f06069d;
+  color: #04353e;
+}
+
+.image-preview-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  width: 60%;
+  /* border: black solid 1px; */
+}
+
+.image-preview-edit-modal {
+  /* border-right: #04353e 1px solid; */
+  width: 50%;
+  text-align: center;
+}
+.image-preview-edit-modal h5 {
+  text-align: center;
 }
 
 .image-preview {
-  border-radius: 15px;
+  border-radius: 8px;
   width: 100px;
   height: 100px;
+}
+
+.image-preview-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCocktail } from "../../redux/cocktail";
 import "./CreateCocktailForm.css";
+import { useNavigate } from "react-router-dom";
 
 const CreateCocktailForm = () => {
   const [name, setName] = useState("");
@@ -13,6 +14,7 @@ const CreateCocktailForm = () => {
   ]);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const navigate = useNavigate();
 
   const getCsrfToken = () => {
     const csrfCookie = document.cookie
@@ -57,15 +59,13 @@ const CreateCocktailForm = () => {
     const result = await dispatch(createCocktail(formData));
 
     if (!result.errors) {
-      // Clear the form after successful creation
       setName("");
       setDescription("");
       setInstructions("");
       setImage(null);
       setIngredients([{ name: "", amount: "", unit: "" }]);
-      // Optional: Display success message or redirect
+      navigate(`/users/${user.id}`);
     } else {
-      // Optional: Handle errors (display error messages)
       console.error(result.errors);
     }
   };

@@ -46,80 +46,90 @@ function SignupFormModal() {
   };
 
   return (
-    <>
+    <div className="signup-form">
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <label>
-          Email
+        <label className="input-signup-form">
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className="form-input"
+            placeholder="Email"
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
-        <label>
-          Username
+        <label className="input-signup-form">
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            className="form-input"
+            placeholder="Username"
           />
         </label>
         {errors.username && <p>{errors.username}</p>}
-        <label>
-          Password
+        <label className="input-signup-form">
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className="form-input"
+            placeholder="Password"
           />
         </label>
         {errors.password && <p>{errors.password}</p>}
-        <label>
-          Confirm Password
+        <label className="input-signup-form">
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            className="form-input"
+            placeholder="Confirm Password"
           />
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <label>
-          First Name
+        <label className="input-signup-form">
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
+            className="form-input"
+            placeholder="First Name"
           />
         </label>
         {errors.firstName && <p>{errors.firstName}</p>}
-        <label>
-          Last Name
+        <label className="input-signup-form">
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
+            className="form-input"
+            placeholder="Last Name"
           />
         </label>
         {errors.lastName && <p>{errors.lastName}</p>}
-        <label>
-          Profile Image
+        <label className="input-signup-form">
           <input
             type="file"
             onChange={(e) => setProfileImage(e.target.files[0])}
+            className="form-file"
           />
         </label>
-        <button type="submit">Sign Up</button>
+        <div className="sign-up-button-sign">
+          <button type="submit" className="submit-button">
+            Sign Up
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

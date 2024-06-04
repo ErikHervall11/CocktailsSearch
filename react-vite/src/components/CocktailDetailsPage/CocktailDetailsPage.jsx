@@ -101,18 +101,20 @@ const CocktailDetailsPage = () => {
           </li>
         ))}
       </ul>
-      <h3>Comments</h3>
-      {user && user.id !== cocktail.created_by && !hasUserCommented && (
-        <div>
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Add a comment"
-            className="details-textarea"
-          ></textarea>
-          <button onClick={handleCreateComment}>Comment</button>
-        </div>
-      )}
+      <div className="comment-area">
+        <h3>Comments</h3>
+        {user && user.id !== cocktail.created_by && !hasUserCommented && (
+          <div className="comment-space">
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Add a comment"
+              className="details-textarea"
+            ></textarea>
+            <button onClick={handleCreateComment}>Submit</button>
+          </div>
+        )}
+      </div>
       <ul className="comments-list">
         {comments.map((comment) => (
           <li key={comment.id}>

@@ -25,7 +25,7 @@ const CocktailList = () => {
 
   return (
     <div>
-      <h1>Cocktail List</h1>
+      <h1 className="cocktail-list-header">Cocktail List</h1>
       <div className="cocktail-grid">
         {sortedCocktails.map((cocktail, index) => {
           const creator = users.find((user) => user.id === cocktail.created_by);

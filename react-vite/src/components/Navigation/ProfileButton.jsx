@@ -47,7 +47,7 @@ function ProfileButton() {
     <>
       <button onClick={toggleMenu} className="menu-button">
         <img
-          src="https://res.cloudinary.com/dkxfjbynk/image/upload/v1716390373/d69616d8-757c-4e98-ab14-409427c634db.png"
+          src="/UserProfileLogo.png"
           alt="Profile Button"
           className="profile-button"
         />

@@ -6,12 +6,25 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 20px;
+  /* margin-bottom: 10px; */
+  justify-content: center;
+  font-size: 30px;
+}
+
+.my-cocktails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.my-cocktails-header {
+  font-size: 30px;
 }
 
 .profile-image {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
 
@@ -60,6 +73,25 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
+}
+
+.add-new-cocktail-button {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 5px 10px;
+  background-color: #04353e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-new-cocktail-button:hover {
+  background-color: #064b57;
 }
 
 /* Edit button */

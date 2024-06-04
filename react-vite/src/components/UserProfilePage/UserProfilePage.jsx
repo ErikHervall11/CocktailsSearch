@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCocktails, deleteCocktailThunk } from "../../redux/cocktail";
 import { fetchComments } from "../../redux/comments";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import EditCocktailModal from "../EditCocktailModal/EditCocktailModal";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import "./UserProfilePage.css";
 
 const UserProfilePage = () => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const profileUserId = parseInt(id, 10);
   const cocktails = useSelector((state) =>
     state.cocktails.cocktails.filter(
-      (cocktail) => cocktail.created_by === user.id
+      (cocktail) => cocktail.created_by === profileUserId
     )
   );
   const comments = useSelector((state) => state.comments.comments);
@@ -41,7 +43,7 @@ const UserProfilePage = () => {
   };
 
   const commentedCocktails = comments
-    .filter((comment) => comment.user_id === user.id)
+    .filter((comment) => comment.user_id === profileUserId)
     .map((comment) => comment.cocktail_id);
 
   const commentedCocktailsSet = new Set(commentedCocktails);
@@ -59,9 +61,16 @@ const UserProfilePage = () => {
           alt="Profile Image"
           className="profile-image"
         />
-        <h1>{user.username}&apos;s Profile</h1>
+        <h1>{user.username}&apos;s Bar</h1>
       </div>
-      <h2>My Cocktails</h2>
+      <div className="my-cocktails">
+        <h2 className="my-cocktails-header">My Cocktails</h2>
+        {user.id === profileUserId && (
+          <Link to="/cocktails/new" className="add-new-cocktail-button">
+            Add New Cocktail
+          </Link>
+        )}
+      </div>
       <div className="cocktail-grid">
         {cocktails.map((cocktail) => (
           <div key={cocktail.id} className="cocktail-card">
@@ -77,15 +86,19 @@ const UserProfilePage = () => {
                 </li>
               ))}
             </ul>
-            <button className="edit" onClick={() => handleEdit(cocktail)}>
-              Edit
-            </button>
-            <button
-              className="delete"
-              onClick={() => openDeleteModal(cocktail)}
-            >
-              Delete
-            </button>
+            {user.id === profileUserId && (
+              <>
+                <button className="edit" onClick={() => handleEdit(cocktail)}>
+                  Edit
+                </button>
+                <button
+                  className="delete"
+                  onClick={() => openDeleteModal(cocktail)}
+                >
+                  Delete
+                </button>
+              </>
+            )}
           </div>
         ))}
       </div>
@@ -107,7 +120,7 @@ const UserProfilePage = () => {
                   comments.find(
                     (comment) =>
                       comment.cocktail_id === cocktail.id &&
-                      comment.user_id === user.id
+                      comment.user_id === profileUserId
                   )?.content
                 }
               </p>

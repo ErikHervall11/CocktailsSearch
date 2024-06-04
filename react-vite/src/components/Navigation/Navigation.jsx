@@ -14,16 +14,17 @@ function Navigation() {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/cocktails/new">Create Cocktail</NavLink>
-      </li>
-      <li>
-        <NavLink to="/cocktail-search">Cocktail Search</NavLink>
+        <NavLink to="/cocktail-search">
+          <img className="search-logo" src="/CocktailSearch.png" alt="" />
+        </NavLink>
       </li>
       {/* <li>
         <NavLink to={`/users/${user.id}`}>User Profile</NavLink>
       </li> */}
       <li>
-        <NavLink to="/cocktails">Cocktail List</NavLink>
+        <NavLink to="/cocktails">
+          <img className="list-logo" src="/CocktailList.png" alt="" />
+        </NavLink>
       </li>
 
       <li>

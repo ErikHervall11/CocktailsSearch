@@ -78,40 +78,60 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <p>Edit Your Recipe</p>
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          className="edit-cocktail-form"
+        >
+          {imagePreview && (
+            <div className="image-preview-container">
+              <div className="image-preview-edit-modal">
+                <p>Image Preview:</p>
+                <h5 className="current-image-text">
+                  Current image will be used if no new image is uploaded
+                </h5>
+              </div>
+              <div className="image-preview-image">
+                <img
+                  className="image-preview"
+                  src={imagePreview}
+                  alt="Cocktail preview"
+                />
+              </div>
+            </div>
+          )}
+          <input
+            type="file"
+            onChange={handleImageChange}
+            className="form-input"
+          />
           <input
             type="text"
             placeholder="Cocktail Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            className="form-input-name"
           />
-          <textarea
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-          <textarea
-            placeholder="Instructions"
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
-            required
-          />
-          <input type="file" onChange={handleImageChange} />
-          {imagePreview && (
-            <div>
-              <p>Image Preview:</p>
-              <h5>Current image will be used if no new image is uploaded</h5>
-              <img
-                className="image-preview"
-                src={imagePreview}
-                alt="Cocktail preview"
-              />
-            </div>
-          )}
+          <div className="form-row">
+            <textarea
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+              className="form-textarea"
+            />
+            <textarea
+              placeholder="Instructions"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+              required
+              className="form-textarea"
+            />
+          </div>
           {ingredients.map((ingredient, index) => (
-            <div key={index}>
+            <div key={index} className="ingredient-row">
               <input
                 type="text"
                 name="name"
@@ -121,6 +141,7 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
                   handleIngredientChange(index, "name", e.target.value)
                 }
                 required
+                className="form-input ingredient-input"
               />
               <input
                 type="text"
@@ -131,6 +152,7 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
                   handleIngredientChange(index, "amount", e.target.value)
                 }
                 required
+                className="form-input ingredient-input"
               />
               <input
                 type="text"
@@ -141,22 +163,32 @@ const EditCocktailModal = ({ cocktail, onClose }) => {
                   handleIngredientChange(index, "unit", e.target.value)
                 }
                 required
+                className="form-input ingredient-input"
               />
               <button
                 type="button"
                 onClick={() => handleRemoveIngredient(index)}
+                className="remove-button"
               >
                 Remove
               </button>
             </div>
           ))}
-          <button type="button" onClick={handleAddIngredient}>
+          <button
+            type="button"
+            onClick={handleAddIngredient}
+            className="add-button"
+          >
             Add Ingredient
           </button>
-          <button type="submit">Update Cocktail</button>
-          <button type="button" onClick={onClose}>
-            Cancel
-          </button>
+          <div className="update-cancel">
+            <button type="submit" className="submit-button">
+              Update
+            </button>
+            <button type="button" onClick={onClose} className="cancel-button">
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>
