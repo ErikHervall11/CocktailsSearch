@@ -126,7 +126,7 @@ export const fetchCocktailById = (id) => async (dispatch) => {
   }
 };
 
-// Initial State
+
 const initialState = {
   cocktails: [],
 };

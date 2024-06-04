@@ -1,4 +1,4 @@
-// src/components/CocktailDetailsPage/CocktailDetailsPage.jsx
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

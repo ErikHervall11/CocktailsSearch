@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 from datetime import datetime
 
 def seed_cocktails():
-    # Assuming user IDs 1 to 10 exist in the database
+    
     users = User.query.filter(User.id.in_([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])).all()
     ingredients = Ingredient.query.all()
 

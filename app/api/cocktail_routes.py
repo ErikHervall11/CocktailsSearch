@@ -38,6 +38,32 @@ def search_cocktails():
 
 
 
+@cocktail_routes.route("/cocktails/recent", methods=["GET"])
+def recent_cocktails():
+    cocktails = Cocktail.query.order_by(Cocktail.created_at.desc()).limit(2).all()
+    return jsonify([cocktail.to_dict() for cocktail in cocktails])
+
+
+@cocktail_routes.route("/cocktails/most_comments", methods=["GET"])
+def most_commented_cocktails():
+    cocktails = Cocktail.query.join(Comment, Cocktail.id == Comment.cocktail_id)\
+                .group_by(Cocktail.id)\
+                .order_by(db.func.count(Comment.id).desc())\
+                .limit(2).all()
+    return jsonify([cocktail.to_dict() for cocktail in cocktails])
+
+
+@cocktail_routes.route('/cocktails/random', methods=['GET'])
+def get_random_cocktail():
+    response = requests.get(API_URL, headers={"X-Api-Key": API_KEY})
+    if response.status_code == 200:
+        cocktails = response.json()
+        random_cocktail = random.choice(cocktails)
+        return jsonify([random_cocktail]), 200
+    else:
+        return jsonify({"error": response.status_code, "message": response.text}), response.status_code
+
+
 
 @cocktail_routes.route("/cocktails/new", methods=["POST"])
 @login_required

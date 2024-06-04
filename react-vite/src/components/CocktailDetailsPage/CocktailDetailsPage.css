@@ -104,6 +104,11 @@
 .comment-space button {
   width: 10%;
   border-radius: 7px;
+  cursor: pointer;
+}
+.comment-space button:hover {
+  background-color: rgba(0, 128, 49, 0.705);
+  color: #fdf2c7;
 }
 
 .details-textarea {

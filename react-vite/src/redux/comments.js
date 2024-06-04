@@ -96,7 +96,6 @@ export const deleteCommentThunk = (commentId) => async (dispatch) => {
   }
 };
 
-// Initial State
 const initialState = {
   comments: [],
 };

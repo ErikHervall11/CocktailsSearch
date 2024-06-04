@@ -32,8 +32,8 @@ function SignupFormPage() {
         email,
         username,
         password,
-        first_name: firstName, // Add this line
-        last_name: lastName, // Add this line
+        first_name: firstName, 
+        last_name: lastName, 
       })
     );
 

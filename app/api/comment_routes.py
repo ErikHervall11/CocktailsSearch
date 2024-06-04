@@ -6,7 +6,7 @@ from app.forms.comment_form import CommentForm
 comment_routes = Blueprint('comments', __name__)
 
 
-# Get all comments
+
 @comment_routes.route('/comments', methods=['GET'])
 def get_comments():
     comments = Comment.query.all()
