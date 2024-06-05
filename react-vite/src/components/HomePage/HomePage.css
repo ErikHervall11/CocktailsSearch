@@ -18,6 +18,12 @@
   border-radius: 15px;
 }
 
+.right-column h2 {
+  width: 70%;
+  text-wrap: wrap;
+  text-align: center;
+}
+
 .left-column h2 {
   margin-top: 0;
 }
@@ -58,7 +64,7 @@
 }
 
 .cocktail-search-box input {
-  width: 500px;
+  width: 400px;
 }
 
 .right-column {
