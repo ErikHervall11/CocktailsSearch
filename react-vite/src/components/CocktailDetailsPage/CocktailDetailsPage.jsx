@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -132,7 +131,10 @@ const CocktailDetailsPage = () => {
               </div>
             ) : (
               <div className="comments-list">
-                <p>{comment.content}</p>
+                <div className="comments-list-username-comment">
+                  <p>Comment by: {comment.user.username}</p>
+                  <p>{comment.content}</p>
+                </div>
                 {comment.user_id === user.id && (
                   <div className="edit-delete-buttons">
                     <button onClick={() => handleEditComment(comment)}>

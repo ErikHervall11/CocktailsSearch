@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import CocktailCard from "./CocktailCard";
 import "./HomePage.css";
 
@@ -7,14 +8,17 @@ const HomePage = () => {
   const [mostCommentedCocktails, setMostCommentedCocktails] = useState([]);
   const [searchedCocktails, setSearchedCocktails] = useState([]);
   const [ingredients, setIngredients] = useState("");
+  const [selectedIngredients, setSelectedIngredients] = useState({});
   const [error, setError] = useState(null);
 
+  const user = useSelector((state) => state.session.user);
+
   const ingredientsByCategory = {
-    juice: ["Lemon", "Lime", "Orange", "Pineapple", "Cranberry"],
-    syrup: ["Simple", "Grenadine", "Honey", "Raspberry", "Ginger", "Cinnamon"],
-    liquor: ["Vodka", "Gin", "Rum", "Tequila", "Whiskey", "Vermouth"],
-    herbs: ["Mint", "Basil", "Rosemary", "Lavender", "Cinnamon"],
-    misc: ["Bitters", "Sugar", "Cola", "Soda", "Wine", "Sparkling"],
+    juice: ["lemon", "lime", "orange", "pineapple", "cranberry"],
+    syrup: ["simple", "grenadine", "honey", "raspberry", "ginger", "cinnamon"],
+    liquor: ["vodka", "gin", "rum", "tequila", "whiskey", "vermouth"],
+    herbs: ["mint", "basil", "rosemary", "lavender", "cinnamon"],
+    misc: ["bitters", "sugar", "cola", "soda", "wine", "sparkling"],
   };
 
   useEffect(() => {
@@ -57,100 +61,149 @@ const HomePage = () => {
     }
   };
 
-  const addIngredient = (ingredient) => {
-    const newIngredients = ingredients
-      ? `${ingredients}, ${ingredient}`
-      : ingredient;
-    setIngredients(newIngredients);
+  const handleIngredientClick = (ingredient, category) => {
+    let updatedIngredients = ingredients;
+    const updatedSelectedIngredients = { ...selectedIngredients };
+
+    if (selectedIngredients[ingredient]) {
+      delete updatedSelectedIngredients[ingredient];
+      updatedIngredients = updatedIngredients
+        .split(", ")
+        .filter(
+          (ing) => ing !== ingredient && ing !== `${ingredient} ${category}`
+        )
+        .join(", ");
+    } else {
+      updatedSelectedIngredients[ingredient] = true;
+      updatedIngredients = updatedIngredients
+        ? `${updatedIngredients}, ${ingredient}${
+            category === "juice" || category === "syrup" ? " " + category : ""
+          }`
+        : `${ingredient}${
+            category === "juice" || category === "syrup" ? " " + category : ""
+          }`;
+    }
+
+    setSelectedIngredients(updatedSelectedIngredients);
+    setIngredients(updatedIngredients);
   };
 
   const handleReset = () => {
     setIngredients("");
+    setSelectedIngredients({});
     setSearchedCocktails([]);
     setError(null);
   };
 
+  if (!user) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "50px",
+          textAlign: "center",
+        }}
+      >
+        LOG IN TO JOIN THE COCKTAIL COLLECTIVE
+      </div>
+    );
+  }
+
   return (
-    <div className="homepage">
-      <div className="left-column">
-        <h2 className="cocktail-list-header">Most Recent Cocktails</h2>
-        <div className="cocktail-grid">
-          {recentCocktails.slice(0, 2).map((cocktail) => (
-            <CocktailCard key={cocktail.id} cocktail={cocktail} />
-          ))}
-        </div>
-
-        <h2 className="cocktail-list-header">Most Commented Cocktails</h2>
-        <div className="cocktail-grid">
-          {mostCommentedCocktails.slice(0, 2).map((cocktail) => (
-            <CocktailCard key={cocktail.id} cocktail={cocktail} />
-          ))}
-        </div>
+    <>
+      <div className="website-header-home">
+        <h1>Welcome to Cocktail Collective</h1>
+        <h3>
+          A place to share your cocktail recipes and see others’ creations
+        </h3>
       </div>
-
-      <div className="right-column">
-        <h2>Search Cocktails by Ingredients</h2>
-        <h5>
-          You will only see cocktails that include ALL selected ingredients
-        </h5>
-        <form onSubmit={handleSearch}>
-          <div className="cocktail-search-box">
-            <input
-              className="search-input"
-              type="text"
-              placeholder="CLICK THE INGREDIENTS BELOW TO FILL THE SEARCH BAR !"
-              value={ingredients}
-              onChange={(e) => setIngredients(e.target.value)}
-            />
-            <div className="search-buttons">
-              <button type="submit">Search</button>
-              <button type="button" onClick={handleReset}>
-                Reset
-              </button>
-            </div>
+      <div className="homepage">
+        <div className="left-column">
+          <h2 className="cocktail-list-header">Recently Added Cocktails</h2>
+          <div className="cocktail-grid">
+            {recentCocktails.slice(0, 2).map((cocktail) => (
+              <CocktailCard key={cocktail.id} cocktail={cocktail} />
+            ))}
           </div>
-        </form>
-        {error && <p>{error}</p>}
 
-        <div className="available-ingredients">
-          <div className="ingredient-columns">
-            {Object.entries(ingredientsByCategory).map(
-              ([category, items], idx) => (
-                <div key={idx} className="ingredient-column">
-                  <h4>
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
-                  </h4>
-                  <div className="ingredient-list">
-                    {items.map((ingredient, index) => (
-                      <button
-                        key={index}
-                        onClick={() => addIngredient(ingredient)}
-                        className="ingredient-button"
-                      >
-                        {ingredient}
-                      </button>
-                    ))}
+          <h2 className="cocktail-list-header">Most Commented Cocktails</h2>
+          <div className="cocktail-grid">
+            {mostCommentedCocktails.slice(0, 2).map((cocktail) => (
+              <CocktailCard key={cocktail.id} cocktail={cocktail} />
+            ))}
+          </div>
+        </div>
+
+        <div className="right-column">
+          <h2>Search Our Cocktail Database by Ingredients</h2>
+          <h5>
+            You will only see cocktails that include ALL selected ingredients
+          </h5>
+          <form onSubmit={handleSearch}>
+            <div className="cocktail-search-box">
+              <input
+                className="search-input"
+                type="text"
+                placeholder="CLICK THE INGREDIENTS BELOW TO FILL THE SEARCH BAR !"
+                value={ingredients}
+                onChange={(e) => setIngredients(e.target.value)}
+              />
+              <div className="search-buttons">
+                <button type="submit">Search</button>
+                <button type="button" onClick={handleReset}>
+                  Reset
+                </button>
+              </div>
+            </div>
+          </form>
+          {error && <p>{error}</p>}
+
+          <div className="available-ingredients">
+            <div className="ingredient-columns">
+              {Object.entries(ingredientsByCategory).map(
+                ([category, items], idx) => (
+                  <div key={idx} className="ingredient-column">
+                    <h4>
+                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </h4>
+                    <div className="ingredient-list">
+                      {items.map((ingredient, index) => (
+                        <button
+                          key={index}
+                          onClick={() =>
+                            handleIngredientClick(ingredient, category)
+                          }
+                          className={`ingredient-button ${
+                            selectedIngredients[ingredient] ? "selected" : ""
+                          }`}
+                        >
+                          {ingredient}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )
-            )}
+                )
+              )}
+            </div>
+          </div>
+          <div className="cocktail-search-container">
+            {searchedCocktails.map((cocktail, index) => (
+              <div key={index} className="cocktail-card">
+                <h2>{cocktail.name}</h2>
+                <p>{cocktail.instructions}</p>
+                <ul>
+                  {cocktail.ingredients.map((ingredient, i) => (
+                    <li key={i}>{ingredient}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="cocktail-search-container">
-          {searchedCocktails.map((cocktail, index) => (
-            <div key={index} className="cocktail-card">
-              <h2>{cocktail.name}</h2>
-              <p>{cocktail.instructions}</p>
-              <ul>
-                {cocktail.ingredients.map((ingredient, i) => (
-                  <li key={i}>{ingredient}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
       </div>
-    </div>
+    </>
   );
 };
 

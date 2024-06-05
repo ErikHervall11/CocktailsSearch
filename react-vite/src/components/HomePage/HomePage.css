@@ -9,6 +9,10 @@
   width: 45%;
 }
 
+.website-header-home {
+  text-align: center;
+}
+
 .right-column {
   border: #04353e solid 1px;
   border-radius: 15px;
@@ -99,6 +103,11 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-align: center;
+}
+
+.ingredient-button.selected {
+  background-color: #b4990181;
+  color: #04353e;
 }
 
 .ingredient-button:hover {
