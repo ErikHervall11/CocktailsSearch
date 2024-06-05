@@ -13,6 +13,11 @@
 .comments-list-username-comment {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
+}
+
+.comments-list-username-comment * {
+  overflow-wrap: anywhere;
 }
 
 .cocktail-details img {

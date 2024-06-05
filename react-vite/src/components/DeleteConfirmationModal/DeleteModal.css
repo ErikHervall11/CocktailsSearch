@@ -3,6 +3,16 @@
   text-align: center;
 }
 
+.modal-content {
+  width: 600px;
+  text-align: center;
+}
+
+.edit-delete-buttons button {
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .modal-content-edit button {
   cursor: pointer;
   width: 30%;
@@ -13,6 +23,13 @@
   align-items: center;
   text-align: center;
   justify-content: center;
+}
+
+.delete-modal-buttons button {
+  cursor: pointer;
+  width: 30%;
+  margin: 0px 10px;
+  border-radius: 8px;
 }
 
 .modal-delete-confirm {

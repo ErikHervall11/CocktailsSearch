@@ -36,4 +36,27 @@
 .search-toggle-buttons button {
   width: 200px;
   margin: 0px 10px;
+  border-radius: 8px;
+  background-color: #04353e;
+  color: #fdf2c7;
+  cursor: pointer;
+}
+
+.cocktail-search-box button {
+  border-radius: 8px;
+  background-color: #04353e;
+  color: #fdf2c7;
+  cursor: pointer;
+}
+
+.search-toggle-buttons button:hover {
+  background-color: #04353eb6;
+  color: #fdf2c7;
+  cursor: pointer;
+}
+
+.cocktail-search-box button:hover {
+  background-color: #04353eb6;
+  color: #fdf2c7;
+  cursor: pointer;
 }

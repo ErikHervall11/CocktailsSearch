@@ -137,7 +137,7 @@ const HomePage = () => {
         </div>
 
         <div className="right-column">
-          <h2>Search Our Cocktail Database by Ingredients</h2>
+          <h2>Search Our Non-User-Created Database By Ingredient</h2>
           <h5>
             You will only see cocktails that include ALL selected ingredients
           </h5>

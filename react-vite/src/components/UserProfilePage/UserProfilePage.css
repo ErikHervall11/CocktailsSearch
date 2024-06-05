@@ -115,3 +115,13 @@
   background-color: #8f06069d;
   color: #000;
 }
+
+.cocktail-grid h2 {
+  overflow-wrap: anywhere;
+}
+.cocktail-grid p {
+  overflow-wrap: anywhere;
+}
+.cocktail-grid li {
+  overflow-wrap: anywhere;
+}

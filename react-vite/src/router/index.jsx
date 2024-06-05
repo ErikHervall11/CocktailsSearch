@@ -8,6 +8,7 @@ import CreateCocktailForm from "../components/CreateCocktailForm/CreateCocktailF
 import Layout from "./Layout";
 import CocktailList from "../components/CocktailList/CocktailList";
 import CocktailDetailsPage from "../components/CocktailDetailsPage/CocktailDetailsPage";
+import About from "../components/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: "cocktails/:id",
         element: <CocktailDetailsPage />,
+      },
+      {
+        path: "about",
+        element: <About />,
       },
     ],
   },

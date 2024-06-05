@@ -26,6 +26,11 @@ function Navigation() {
           <img className="list-logo" src="/CocktailList.png" alt="" />
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/about">
+          <img className="list-logo" src="/aboutlogo.png" alt="" />
+        </NavLink>
+      </li>
 
       <li>
         <ProfileButton />

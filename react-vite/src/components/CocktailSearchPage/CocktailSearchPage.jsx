@@ -38,7 +38,10 @@ const CocktailSearchPage = () => {
     <div>
       <div className="search-top">
         <h1>Discover your new favorite!</h1>
-        <h3>Search from our database of over 1,000 different cocktails!</h3>
+        <h3>
+          Search from our non-user-created database of over 1,000 different
+          cocktails!
+        </h3>
         <h5>If you search by ingredient, separate ingredients by comma</h5>
         <div className="search-toggle-buttons">
           <button
