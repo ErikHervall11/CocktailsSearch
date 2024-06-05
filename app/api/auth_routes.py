@@ -11,6 +11,8 @@ from app.api.AWS_helpers import (
 
 auth_routes = Blueprint('auth', __name__)
 
+DEFAULT_PROFILE_IMAGE_URL = "https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg"
+
 
 @auth_routes.route('/')
 def authenticate():
@@ -62,7 +64,7 @@ def sign_up():
                 return jsonify({"errors": "Failed to upload image"}), 400
             profile_image_url = upload["url"]
         else:
-            profile_image_url = None
+            profile_image_url = DEFAULT_PROFILE_IMAGE_URL
 
         user = User(
             username=form.data['username'],

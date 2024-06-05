@@ -21,8 +21,7 @@ function SignupFormModal() {
 
     if (password !== confirmPassword) {
       return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
+        confirmPassword: "Confirm Password must be the same as the Password",
       });
     }
 
@@ -48,7 +47,7 @@ function SignupFormModal() {
   return (
     <div className="signup-form">
       <h1>Sign Up</h1>
-      {errors.server && <p>{errors.server}</p>}
+      {errors.server && <p className="error-message">{errors.server}</p>}
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <label className="input-signup-form">
           <input
@@ -59,8 +58,8 @@ function SignupFormModal() {
             className="form-input"
             placeholder="Email"
           />
+          {errors.email && <p className="error-message">{errors.email}</p>}
         </label>
-        {errors.email && <p>{errors.email}</p>}
         <label className="input-signup-form">
           <input
             type="text"
@@ -70,8 +69,10 @@ function SignupFormModal() {
             className="form-input"
             placeholder="Username"
           />
+          {errors.username && (
+            <p className="error-message">{errors.username}</p>
+          )}
         </label>
-        {errors.username && <p>{errors.username}</p>}
         <label className="input-signup-form">
           <input
             type="password"
@@ -79,10 +80,12 @@ function SignupFormModal() {
             onChange={(e) => setPassword(e.target.value)}
             required
             className="form-input"
-            placeholder="Password"
+            placeholder="Password (min 8 characters)"
           />
+          {errors.password && (
+            <p className="error-message">{errors.password}</p>
+          )}
         </label>
-        {errors.password && <p>{errors.password}</p>}
         <label className="input-signup-form">
           <input
             type="password"
@@ -92,8 +95,10 @@ function SignupFormModal() {
             className="form-input"
             placeholder="Confirm Password"
           />
+          {errors.confirmPassword && (
+            <p className="error-message">{errors.confirmPassword}</p>
+          )}
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <label className="input-signup-form">
           <input
             type="text"
@@ -103,8 +108,10 @@ function SignupFormModal() {
             className="form-input"
             placeholder="First Name"
           />
+          {errors.firstName && (
+            <p className="error-message">{errors.firstName}</p>
+          )}
         </label>
-        {errors.firstName && <p>{errors.firstName}</p>}
         <label className="input-signup-form">
           <input
             type="text"
@@ -114,14 +121,17 @@ function SignupFormModal() {
             className="form-input"
             placeholder="Last Name"
           />
+          {errors.lastName && (
+            <p className="error-message">{errors.lastName}</p>
+          )}
         </label>
-        {errors.lastName && <p>{errors.lastName}</p>}
         <label className="input-signup-form">
           <input
             type="file"
             onChange={(e) => setProfileImage(e.target.files[0])}
             className="form-file"
           />
+          <h5>If no image is chosen, a default image will be used</h5>
         </label>
         <div className="sign-up-button-sign">
           <button type="submit" className="submit-button">
