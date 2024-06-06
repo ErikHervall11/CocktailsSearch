@@ -21,7 +21,7 @@
   height: auto;
   object-fit: cover;
   background-color: transparent;
-  margin-top: -350px;
+  margin-top: -230px;
 }
 
 .icongit-wrapper,
@@ -37,14 +37,14 @@
   border-radius: 50%;
   top: 50%;
   left: 25%;
-  transform: translate(-120%, -100%);
+  transform: translate(-120%, -60%);
 }
 
 .icongit-wrapper2 {
   border-radius: 10%;
   top: 50%;
   left: 75%;
-  transform: translate(-120%, -100%);
+  transform: translate(-120%, -60%);
 }
 
 .icongit {
