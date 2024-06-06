@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import EditCocktailModal from "../EditCocktailModal/EditCocktailModal";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import "./UserProfilePage.css";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const UserProfilePage = () => {
   const { id } = useParams();
@@ -21,11 +22,15 @@ const UserProfilePage = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [currentCocktail, setCurrentCocktail] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchCocktails());
-    dispatch(fetchComments());
-    // dispatch(fetchCommentsById(id));
+    const fetchData = async () => {
+      await dispatch(fetchCocktails());
+      await dispatch(fetchComments());
+      setIsLoading(false);
+    };
+    fetchData();
   }, [dispatch]);
 
   const handleDelete = (cocktailId) => {
@@ -53,6 +58,10 @@ const UserProfilePage = () => {
       commentedCocktailsSet.has(cocktail.id)
     )
   );
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="profile-page">

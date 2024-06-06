@@ -1,0 +1,37 @@
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 20vh;
+}
+
+.loading-container p {
+  margin-left: 50px;
+  font-size: 80px;
+}
+
+.shaker {
+  width: 300px;
+  animation: shake 0.5s infinite;
+}

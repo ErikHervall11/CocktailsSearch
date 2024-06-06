@@ -1,8 +1,25 @@
+import { useState, useEffect } from "react";
 import "./About.css";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const About = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulating an async operation (e.g., fetching data)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Adjust the timeout as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div className="about">
       {/* <h1>Welcome To My Bar</h1> */}

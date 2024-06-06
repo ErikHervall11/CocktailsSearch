@@ -1,22 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCocktails } from "../../redux/cocktail";
 import { fetchUsers } from "../../redux/session";
 import { Link } from "react-router-dom";
 import "./CocktailList.css";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const CocktailList = () => {
   const dispatch = useDispatch();
   const cocktails = useSelector((state) => state.cocktails.cocktails);
   const users = useSelector((state) => state.session.users.users);
-  // const id = useSelector((state) => state.session.user.id);
-  // console.log("zzzzzzzzzzzzzzzzzzzzz", id);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchCocktails());
-    dispatch(fetchUsers());
-    // dispatch(fetchCocktailById(id));
-    // dispatch(fetchCommentsById(id));
+    const fetchData = async () => {
+      await dispatch(fetchCocktails());
+      await dispatch(fetchUsers());
+      setIsLoading(false);
+    };
+    fetchData();
   }, [dispatch]);
 
   if (!Array.isArray(users)) {
@@ -26,6 +28,10 @@ const CocktailList = () => {
   const sortedCocktails = [...cocktails].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div>

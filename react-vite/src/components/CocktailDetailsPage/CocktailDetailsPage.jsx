@@ -10,6 +10,7 @@ import {
 } from "../../redux/comments";
 import DeleteCommentConfirmationModal from "../DeleteConfirmationModal/DeleteCommentConfirmationModal";
 import "./CocktailDetailsPage.css";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const CocktailDetailsPage = () => {
   const { id } = useParams();
@@ -26,14 +27,19 @@ const CocktailDetailsPage = () => {
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [currentCommentId, setCurrentCommentId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchCommentsById(id));
-    dispatch(fetchCocktailById(id));
-    dispatch(fetchCocktails());
+    const fetchData = async () => {
+      await dispatch(fetchCommentsById(id));
+      await dispatch(fetchCocktailById(id));
+      await dispatch(fetchCocktails());
+      setIsLoading(false);
+    };
+    fetchData();
   }, [dispatch, id]);
 
-  if (!cocktail) return <div>Loading...</div>;
+  if (isLoading || !cocktail) return <LoadingSpinner />;
 
   const handleCreateComment = async () => {
     const formData = new FormData();
