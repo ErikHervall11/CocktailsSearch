@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCocktailById } from "../../redux/cocktail";
+import { fetchCocktailById, fetchCocktails } from "../../redux/cocktail";
 import {
   fetchCommentsById,
   createComment,
   updateCommentThunk,
   deleteCommentThunk,
+  fetchComments,
 } from "../../redux/comments";
 import DeleteCommentConfirmationModal from "../DeleteConfirmationModal/DeleteCommentConfirmationModal";
 import "./CocktailDetailsPage.css";
@@ -30,6 +31,8 @@ const CocktailDetailsPage = () => {
   useEffect(() => {
     dispatch(fetchCocktailById(id));
     dispatch(fetchCommentsById(id));
+    dispatch(fetchCocktails());
+    dispatch(fetchComments());
   }, [dispatch, id]);
 
   if (!cocktail) return <div>Loading...</div>;
@@ -118,26 +121,37 @@ const CocktailDetailsPage = () => {
         {comments.map((comment) => (
           <li key={comment.id}>
             {editingComment === comment.id ? (
-              <div>
+              <div className="update-canel-buttons">
                 <textarea
                   value={editingContent}
                   onChange={(e) => setEditingContent(e.target.value)}
                   className="comment-textarea"
                 ></textarea>
-                <button onClick={() => handleUpdateComment(comment.id)}>
-                  Update
-                </button>
-                <button onClick={() => setEditingComment(null)}>Cancel</button>
+                <div className="update-canel-buttons">
+                  <button onClick={() => handleUpdateComment(comment.id)}>
+                    Update
+                  </button>
+                  <button onClick={() => setEditingComment(null)}>
+                    Cancel
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="comments-list">
                 <div className="comments-list-username-comment">
-                  <p>Comment by: {comment.user.username}</p>
-                  <p>{comment.content}</p>
+                  <div className="comment-box">
+                    <p>Comment by: {comment.user.username}</p>
+                  </div>
+                  <div className="comment-box">
+                    <p>{comment.content}</p>
+                  </div>
                 </div>
                 {comment.user_id === user.id && (
                   <div className="edit-delete-buttons">
-                    <button onClick={() => handleEditComment(comment)}>
+                    <button
+                      className="edit-button-next-to-delete"
+                      onClick={() => handleEditComment(comment)}
+                    >
                       Edit
                     </button>
                     <button onClick={() => handleDeleteComment(comment.id)}>

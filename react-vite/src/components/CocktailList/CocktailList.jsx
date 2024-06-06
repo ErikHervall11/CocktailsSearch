@@ -9,10 +9,14 @@ const CocktailList = () => {
   const dispatch = useDispatch();
   const cocktails = useSelector((state) => state.cocktails.cocktails);
   const users = useSelector((state) => state.session.users.users);
+  // const id = useSelector((state) => state.session.user.id);
+  // console.log("zzzzzzzzzzzzzzzzzzzzz", id);
 
   useEffect(() => {
     dispatch(fetchCocktails());
     dispatch(fetchUsers());
+    // dispatch(fetchCocktailById(id));
+    // dispatch(fetchCommentsById(id));
   }, [dispatch]);
 
   if (!Array.isArray(users)) {

@@ -13,8 +13,16 @@
 .comments-list-username-comment {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 800px;
 }
+
+/* .comments-list-username-comment p {
+  justify-content: left; 
+  text-align: left;
+  align-items: start;
+
+  border: yellow solid 1px;
+} */
 
 .comments-list-username-comment * {
   overflow-wrap: anywhere;
@@ -77,7 +85,7 @@
   align-items: flex-start;
   padding: 10px;
   background-color: #064151;
-  border-radius: 4px;
+  border-radius: 8px;
   margin-bottom: 10px;
 }
 
@@ -92,6 +100,9 @@
   gap: 10px;
   background-color: #064151;
   align-items: center;
+  width: 100%;
+
+  /* justify-content: space-between; */
 }
 
 .comment-area {
@@ -125,9 +136,31 @@
   margin-bottom: 10px;
 }
 
+.comments-list li div button {
+  display: flex;
+  justify-content: right;
+  border-radius: 8px;
+}
+.comments-list li .update-canel-buttons {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+}
+
+.edit-delete-buttons {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+}
+.edit-delete-buttons .edit-button-next-to-delete {
+  width: 55px;
+  justify-content: center;
+}
+
 .comment-textarea,
 .details-textarea {
-  width: 40%;
+  width: 550px;
+  height: 78px;
   padding: 10px;
   margin-top: 10px;
   border-radius: 4px;
@@ -144,7 +177,7 @@
 
 .comments-list button:first-of-type:hover {
   background-color: #b4990181;
-  color: #000;
+  color: #fff;
 }
 
 /* Delete button */
@@ -155,5 +188,5 @@
 
 .comments-list button:last-of-type:hover {
   background-color: #8f06069d;
-  color: #000;
+  color: #fff;
 }
