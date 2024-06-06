@@ -26,6 +26,22 @@
   padding-top: 20vh;
 }
 
+.other-loading div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  text-align: center;
+}
+.other-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 0px;
+}
+
 .loading-container p {
   margin-left: 50px;
   font-size: 80px;

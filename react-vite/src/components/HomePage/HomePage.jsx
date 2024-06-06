@@ -106,16 +106,21 @@ const HomePage = () => {
 
   if (!user) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: "50px",
-          textAlign: "center",
-        }}
-      >
-        LOG IN TO JOIN THE COCKTAIL COLLECTIVE
+      <div className="loading-container other-loading">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "50px",
+            textAlign: "center",
+          }}
+        >
+          LOG IN TO JOIN THE COCKTAIL COLLECTIVE
+        </div>
+        <div>
+          <img src="/shakerr.png" alt="Loading..." className="shaker" />
+        </div>
       </div>
     );
   }
