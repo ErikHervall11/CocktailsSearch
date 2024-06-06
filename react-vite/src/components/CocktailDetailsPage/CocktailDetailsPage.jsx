@@ -28,10 +28,9 @@ const CocktailDetailsPage = () => {
   const [currentCommentId, setCurrentCommentId] = useState(null);
 
   useEffect(() => {
-    dispatch(fetchCocktailById(id));
     dispatch(fetchCommentsById(id));
+    dispatch(fetchCocktailById(id));
     dispatch(fetchCocktails());
-    // dispatch(fetchComments());
   }, [dispatch, id]);
 
   if (!cocktail) return <div>Loading...</div>;

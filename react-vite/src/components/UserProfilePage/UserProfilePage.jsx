@@ -25,6 +25,7 @@ const UserProfilePage = () => {
   useEffect(() => {
     dispatch(fetchCocktails());
     dispatch(fetchComments());
+    // dispatch(fetchCommentsById(id));
   }, [dispatch]);
 
   const handleDelete = (cocktailId) => {
