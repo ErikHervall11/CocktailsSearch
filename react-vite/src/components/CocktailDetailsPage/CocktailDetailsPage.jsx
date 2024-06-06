@@ -7,7 +7,6 @@ import {
   createComment,
   updateCommentThunk,
   deleteCommentThunk,
-  fetchComments,
 } from "../../redux/comments";
 import DeleteCommentConfirmationModal from "../DeleteConfirmationModal/DeleteCommentConfirmationModal";
 import "./CocktailDetailsPage.css";
@@ -32,7 +31,7 @@ const CocktailDetailsPage = () => {
     dispatch(fetchCocktailById(id));
     dispatch(fetchCommentsById(id));
     dispatch(fetchCocktails());
-    dispatch(fetchComments());
+    // dispatch(fetchComments());
   }, [dispatch, id]);
 
   if (!cocktail) return <div>Loading...</div>;
