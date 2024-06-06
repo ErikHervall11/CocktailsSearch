@@ -93,6 +93,7 @@
   background-color: #064151;
   color: #fdf2c7;
   margin: 5px 0;
+  width: 600px;
 }
 
 .comments-list li div {
@@ -159,7 +160,7 @@
 
 .comment-textarea,
 .details-textarea {
-  width: 550px;
+  width: 2300px;
   height: 78px;
   padding: 10px;
   margin-top: 10px;
