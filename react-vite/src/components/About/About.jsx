@@ -3,6 +3,7 @@ import "./About.css";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import { CiLight } from "react-icons/ci";
 
 const About = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,8 +21,6 @@ const About = () => {
 
   return (
     <div className="about">
-      {/* <h1>Welcome To My Bar</h1> */}
-
       <div className="image-container">
         <img src="/erikbar.png" alt="Erik's Bar" />
         <a
@@ -41,6 +40,9 @@ const About = () => {
           <FaLinkedin className="icongit" />
         </a>
       </div>
+      <CiLight className="light-bulb" />
+      <CiLight className="light-bulb2" />
+      <CiLight className="light-bulb3" />
     </div>
   );
 };
