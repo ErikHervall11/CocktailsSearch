@@ -8,11 +8,9 @@ const About = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating an async operation (e.g., fetching data)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Adjust the timeout as needed
-
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
