@@ -4,6 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { CiLight } from "react-icons/ci";
+import { IoTriangle } from "react-icons/io5";
 
 const About = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -43,6 +44,9 @@ const About = () => {
       <CiLight className="light-bulb" />
       <CiLight className="light-bulb2" />
       <CiLight className="light-bulb3" />
+      <IoTriangle className="light-shine" />
+      <IoTriangle className="light-shine2" />
+      <IoTriangle className="light-shine3" />
     </div>
   );
 };

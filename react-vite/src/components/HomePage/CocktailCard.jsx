@@ -4,7 +4,10 @@ import "./CocktailCard.css";
 
 const CocktailCard = ({ cocktail }) => {
   return (
-    <Link to={`/cocktails/${cocktail.id}`} className="cocktail-card">
+    <Link
+      to={`/cocktails/${cocktail.id}`}
+      className="cocktail-card no-underline"
+    >
       {cocktail.image_url && (
         <img src={cocktail.image_url} alt={cocktail.name} />
       )}

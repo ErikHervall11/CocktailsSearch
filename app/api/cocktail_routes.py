@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import requests
 from flask_login import current_user, login_required
-from app.models import db, Cocktail, CocktailIngredient, Ingredient, Comment
+from app.models import db, Cocktail, CocktailIngredient, Ingredient, Comment, Favorite
 from app.forms.cocktail_form import CocktailForm
 from app.api.AWS_helpers import (
     upload_file_to_s3,
@@ -232,3 +232,47 @@ def get_comments(id):
     comments = Comment.query.filter_by(cocktail_id=id).all()
     return jsonify([comment.to_dict() for comment in comments]), 200
 
+
+
+###############################################
+######################FAVORITE################# 
+###############################################
+
+@cocktail_routes.route("/cocktails/favorites", methods=["POST"])
+@login_required
+def add_favorite():
+    data = request.get_json()
+    cocktail_id = data.get("cocktail_id")
+
+    if not cocktail_id:
+        return jsonify({"error": "Cocktail ID is required"}), 400
+
+    favorite = Favorite.query.filter_by(user_id=current_user.id, cocktail_id=cocktail_id).first()
+
+    if favorite:
+        return jsonify({"error": "Already favorited"}), 400
+
+    new_favorite = Favorite(user_id=current_user.id, cocktail_id=cocktail_id)
+    db.session.add(new_favorite)
+    db.session.commit()
+
+    return jsonify(new_favorite.to_dict()), 201
+
+@cocktail_routes.route("/cocktails/favorites/<int:cocktail_id>", methods=["DELETE"])
+@login_required
+def remove_favorite(cocktail_id):
+    favorite = Favorite.query.filter_by(user_id=current_user.id, cocktail_id=cocktail_id).first()
+
+    if not favorite:
+        return jsonify({"error": "Favorite not found"}), 404
+
+    db.session.delete(favorite)
+    db.session.commit()
+
+    return jsonify({"message": "Favorite removed"}), 200
+
+@cocktail_routes.route("/cocktails/favorites", methods=["GET"])
+@login_required
+def get_favorites():
+    favorites = Favorite.query.filter_by(user_id=current_user.id).all()
+    return jsonify([favorite.to_dict() for favorite in favorites]), 200

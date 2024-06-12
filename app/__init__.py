@@ -41,6 +41,7 @@ app.register_blueprint(auth_routes, url_prefix="/api/auth")
 app.register_blueprint(cocktail_routes, url_prefix="/api")
 app.register_blueprint(comment_routes, url_prefix="/api")
 
+
 # Application Security
 CORS(app)
 

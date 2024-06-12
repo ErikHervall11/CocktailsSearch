@@ -10,6 +10,64 @@
   box-shadow: 0px 0px 8px 8px rgb(4, 53, 62, 0.5);
 }
 
+#favorite-details {
+  background-color: #04353e;
+}
+#favorite-details h2 {
+  background-color: #04353e;
+  color: #fdf2c7;
+}
+
+#fav-button-details {
+  background-color: rgb(168, 168, 41);
+  align-items: center;
+  cursor: pointer;
+  width: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 7px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* font-size: 1rem; */
+}
+
+#unfav-button-details {
+  background-color: initial;
+  background-color: #fdf2c7;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  width: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  display: block;
+  padding: 7px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#unfav-button-details:hover {
+  background-color: #fdf2c7;
+}
+/* #fav-button:hover {
+  background-color: #fdf2c7;
+} */
+
+#shake {
+  width: 50px;
+  height: 50px;
+  margin-top: -9px;
+  margin-bottom: -17px;
+  background-color: transparent;
+}
+
 .comments-list-username-comment {
   display: flex;
   flex-direction: column;

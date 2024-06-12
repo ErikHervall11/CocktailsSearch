@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCocktails, deleteCocktailThunk } from "../../redux/cocktail";
+import {
+  fetchCocktails,
+  deleteCocktailThunk,
+  addFavoriteThunk,
+  removeFavoriteThunk,
+  fetchFavoritesThunk,
+} from "../../redux/cocktail";
 import { fetchComments } from "../../redux/comments";
 import { Link, useParams } from "react-router-dom";
 import EditCocktailModal from "../EditCocktailModal/EditCocktailModal";
@@ -19,6 +25,7 @@ const UserProfilePage = () => {
     )
   );
   const comments = useSelector((state) => state.comments.comments);
+  const favorites = useSelector((state) => state.cocktails.favorites);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [currentCocktail, setCurrentCocktail] = useState(null);
@@ -28,6 +35,7 @@ const UserProfilePage = () => {
     const fetchData = async () => {
       await dispatch(fetchCocktails());
       await dispatch(fetchComments());
+      await dispatch(fetchFavoritesThunk());
       setIsLoading(false);
     };
     fetchData();
@@ -46,6 +54,17 @@ const UserProfilePage = () => {
   const handleEdit = (cocktail) => {
     setCurrentCocktail(cocktail);
     setIsEditModalOpen(true);
+  };
+
+  const handleFavorite = async (cocktailId) => {
+    const isFavorited = favorites.some(
+      (favorite) => favorite.cocktail_id === cocktailId
+    );
+    if (isFavorited) {
+      await dispatch(removeFavoriteThunk(cocktailId));
+    } else {
+      await dispatch(addFavoriteThunk(cocktailId));
+    }
   };
 
   const commentedCocktails = comments
@@ -112,17 +131,60 @@ const UserProfilePage = () => {
           </div>
         ))}
       </div>
+      <h2>Favorited Cocktails</h2>
+      <div className="cocktail-grid">
+        {favorites.map((favorite) => (
+          <div key={favorite.cocktail_id} className="cocktail-card">
+            <Link
+              to={`/cocktails/${favorite.cocktail_id}`}
+              className="no-underline"
+            >
+              <img
+                src={favorite.cocktail.image_url}
+                alt={favorite.cocktail.name}
+              />
+              <h2>{favorite.cocktail.name}</h2>
+              {/* <p>{favorite.cocktail.description}</p> */}
+            </Link>
+            {user && (
+              <button
+                className={
+                  favorites.some(
+                    (fav) => fav.cocktail_id === favorite.cocktail_id
+                  )
+                    ? "favorite-button"
+                    : "unfavorite-button"
+                }
+                id={
+                  favorites.some(
+                    (fav) => fav.cocktail_id === favorite.cocktail_id
+                  )
+                    ? "fav-button"
+                    : "unfav-button"
+                }
+                onClick={() => handleFavorite(favorite.cocktail_id)}
+              >
+                {favorites.some(
+                  (fav) => fav.cocktail_id === favorite.cocktail_id
+                )
+                  ? "Remove"
+                  : "Favorite"}
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
       <h2>Commented Cocktails</h2>
       <div className="cocktail-grid">
         {uniqueCommentedCocktails.map((cocktail) => (
           <Link
             to={`/cocktails/${cocktail.id}`}
             key={cocktail.id}
-            className="cocktail-card"
+            className="cocktail-card no-underline"
           >
             <img src={cocktail.image_url} alt={cocktail.name} />
             <h2>{cocktail.name}</h2>
-            <p>{cocktail.description}</p>
+            {/* <p>{cocktail.description}</p> */}
             <div>
               <div>Your Comment:</div>
               <p>

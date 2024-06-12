@@ -1,7 +1,14 @@
+// CocktailDetailsPage.jsx
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCocktailById, fetchCocktails } from "../../redux/cocktail";
+import {
+  fetchCocktailById,
+  fetchCocktails,
+  addFavoriteThunk,
+  removeFavoriteThunk,
+} from "../../redux/cocktail";
 import {
   fetchCommentsById,
   createComment,
@@ -20,6 +27,7 @@ const CocktailDetailsPage = () => {
   );
   const comments = useSelector((state) => state.comments.comments);
   const user = useSelector((state) => state.session.user);
+  const favorites = useSelector((state) => state.cocktails.favorites);
 
   const [newComment, setNewComment] = useState("");
   const [editingComment, setEditingComment] = useState(null);
@@ -28,6 +36,10 @@ const CocktailDetailsPage = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [currentCommentId, setCurrentCommentId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const isFavorited = favorites.some(
+    (favorite) => favorite.cocktail_id === cocktail?.id
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,12 +99,39 @@ const CocktailDetailsPage = () => {
     setCurrentCommentId(null);
   };
 
+  const handleFavorite = async () => {
+    if (isFavorited) {
+      await dispatch(removeFavoriteThunk(cocktail.id));
+    } else {
+      await dispatch(addFavoriteThunk(cocktail.id));
+    }
+  };
+
   const hasUserCommented = comments.some(
     (comment) => comment.user_id === user.id
   );
 
   return (
     <div className="cocktail-details">
+      <button
+        className={isFavorited ? "favorite-button" : "unfavorite-button"}
+        id={isFavorited ? "fav-button-details" : "unfav-button-details"}
+        onClick={() => handleFavorite(cocktail.id)}
+      >
+        {isFavorited ? (
+          <img
+            src="/shakerr.png"
+            alt="Loading..."
+            className="shaker"
+            id="shake"
+          />
+        ) : (
+          "Favorite"
+        )}
+      </button>
+      <div id="favorite-details">
+        {isFavorited && <h2>This Cocktail is One of Your Favorites!</h2>}
+      </div>
       <img src={cocktail.image_url} alt={cocktail.name} />
       <h1>{cocktail.name}</h1>
       <p>{cocktail.description}</p>
@@ -107,6 +146,7 @@ const CocktailDetailsPage = () => {
           </li>
         ))}
       </ul>
+
       <div className="comment-area">
         <h3>Comments</h3>
         {user && user.id !== cocktail.created_by && !hasUserCommented && (

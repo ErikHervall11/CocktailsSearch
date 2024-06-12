@@ -29,7 +29,7 @@
 .create-cocktail-form .form-input:focus,
 .create-cocktail-form .form-textarea:focus {
   outline: none;
-  border: #064b57 solid 2px;
+  border: #064b57 solid 1px;
   animation: borderMove 0.5s forwards;
   background-color: #f0e0a3;
 }
