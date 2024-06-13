@@ -64,7 +64,7 @@ const CocktailList = () => {
       <h1 className="cocktail-list-header">Cocktail List</h1>
       {Object.keys(cocktailsByCreator).map((creator) => (
         <div key={creator}>
-          <h2>{creator}'s Cocktails</h2>
+          <h2>{creator}&apos;s Cocktails</h2>
           <div className="cocktail-grid" id="list-grid">
             {cocktailsByCreator[creator].map((cocktail) => {
               const isFavorited = favorites.some(

@@ -4,7 +4,7 @@ const LoadingSpinner = () => {
   return (
     <div className="loading-container">
       <img src="/shakerr.png" alt="Loading..." className="shaker" />
-      <p>Shaking...</p>
+      {/* <p>Shaking...</p> */}
     </div>
   );
 };
