@@ -340,7 +340,7 @@
   }
 
   .image-container img {
-    margin-top: -115px;
+    margin-top: -300px;
   }
 
   .icongit-wrapper,
@@ -374,29 +374,101 @@
   }
 
   .light-bulb {
-    transform: translate(-6px, -179px);
+    transform: translate(-6px, -250px);
   }
 
   .light-bulb2 {
-    transform: translate(97px, -154px);
+    transform: translate(78px, -230px);
   }
 
   .light-bulb3 {
-    transform: translate(-108px, -154px);
+    transform: translate(-87px, -230px);
   }
 
   .light-shine {
-    transform: translate(-108px, -98px);
+    transform: translate(-87px, -170px);
     font-size: 150px;
   }
 
   .light-shine2 {
-    transform: translate(-5px, -110px);
+    transform: translate(-5px, -180px);
     font-size: 175px;
   }
 
   .light-shine3 {
-    transform: translate(97px, -98px);
+    transform: translate(78px, -170px);
     font-size: 150px;
+  }
+
+  .icongit-wrapper {
+    border-radius: 50%;
+    top: 50%;
+    left: 25%;
+    transform: translate(5%, -270%);
+  }
+
+  .icongit-wrapper2 {
+    border-radius: 10%;
+    top: 50%;
+    left: 75%;
+    transform: translate(-125%, -270%);
+  }
+
+  @keyframes walkfromright {
+    0% {
+      transform: translate(300%, -150%) rotateY(-70deg);
+    }
+    15% {
+      transform: translate(200%, -150%) rotateY(-70deg);
+    }
+    30% {
+      transform: translate(100%, -150%) rotateY(-70deg);
+    }
+    50% {
+      transform: translate(0%, -150%) rotateY(-70deg);
+    }
+    75% {
+      transform: translate(-100%, -150%) rotateY(-70deg);
+    }
+    100% {
+      transform: translate(-120%, -270%);
+    }
+  }
+  @keyframes walkfromleft {
+    0% {
+      transform: translate(-500%, -150%) rotateY(70deg);
+    }
+    10% {
+      transform: translate(-400%, -150%) rotateY(70deg);
+    }
+    17% {
+      transform: translate(-300%, -150%) rotateY(70deg);
+    }
+    25% {
+      transform: translate(-200%, -150%) rotateY(70deg);
+    }
+    33% {
+      transform: translate(-140%, -150%);
+    }
+    42% {
+      transform: translate(-120%, -270%);
+    }
+    65% {
+      transform: translate(-120%, -270%) rotateY(70deg);
+    }
+    70% {
+      transform: translate(-120%, -270%);
+    }
+    80% {
+      transform: translate(-120%, -150%) rotateY(70deg);
+    }
+
+    89% {
+      transform: translate(5%, -150%) rotateY(70deg);
+    }
+
+    100% {
+      transform: translate(5%, -270%);
+    }
   }
 }
