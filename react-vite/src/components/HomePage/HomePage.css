@@ -10,7 +10,10 @@
 }
 
 .website-header-home {
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  width: 100%;
 }
 
 .right-column {
@@ -119,4 +122,85 @@
 .ingredient-button:hover {
   background-color: #b4990181;
   color: #04353e;
+}
+
+@media (max-width: 768px) {
+  .homepage {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .right-column h5 {
+    text-align: center;
+  }
+  .right-column h2 {
+    font-size: 20px;
+    width: 90%;
+  }
+
+  .ingredient-column {
+    justify-content: center;
+    align-items: center;
+  }
+  .ingredient-column h4 {
+    margin: 3px 3px;
+  }
+  .ingredient-columns {
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+
+  .cocktail-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .cocktail-search-box input {
+    width: 120%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ingredient-list {
+    width: 72px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .cocktail-search-box input {
+    padding: 5px;
+  }
+
+  .ingredient-button {
+    padding: 4px 4px;
+    font-size: 12px;
+    width: 60px;
+  }
+  .ingredient-columns {
+    gap: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .ingredient-column {
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+
+  .website-header-home h1 {
+    font-size: 24px;
+  }
+
+  .website-header-home h3 {
+    font-size: 16px;
+  }
 }

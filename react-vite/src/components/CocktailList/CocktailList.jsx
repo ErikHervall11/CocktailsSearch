@@ -60,43 +60,49 @@ const CocktailList = () => {
   }
 
   return (
-    <div>
-      <h1 className="cocktail-list-header">Cocktail List</h1>
-      {Object.keys(cocktailsByCreator).map((creator) => (
-        <div key={creator}>
-          <h2>{creator}&apos;s Cocktails</h2>
-          <div className="cocktail-grid" id="list-grid">
-            {cocktailsByCreator[creator].map((cocktail) => {
-              const isFavorited = favorites.some(
-                (favorite) => favorite.cocktail_id === cocktail.id
-              );
-              return (
-                <div key={cocktail.id} className="cocktail-card" id="list-card">
-                  <Link
-                    to={`/cocktails/${cocktail.id}`}
-                    className="no-underline"
+    <div id="card-container">
+      <div className="card-list">
+        <h1 className="cocktail-list-header">Cocktail List</h1>
+        {Object.keys(cocktailsByCreator).map((creator) => (
+          <div key={creator}>
+            <h2 id="creator">{creator}&apos;s Cocktails</h2>
+            <div className="cocktail-grid card-row" id="list-grid">
+              {cocktailsByCreator[creator].map((cocktail) => {
+                const isFavorited = favorites.some(
+                  (favorite) => favorite.cocktail_id === cocktail.id
+                );
+                return (
+                  <div
+                    key={cocktail.id}
+                    className="cocktail-card"
+                    id="list-card"
                   >
-                    <img src={cocktail.image_url} alt={cocktail.name} />
-                    <h2>{cocktail.name}</h2>
-                    <p>{cocktail.description}</p>
-                  </Link>
-                  {user && (
-                    <button
-                      className={
-                        isFavorited ? "favorite-button" : "unfavorite-button"
-                      }
-                      id={isFavorited ? "fav-button" : "unfav-button"}
-                      onClick={() => handleFavorite(cocktail.id)}
+                    <Link
+                      to={`/cocktails/${cocktail.id}`}
+                      className="no-underline"
                     >
-                      {isFavorited ? "Favorited!" : "Favorite"}
-                    </button>
-                  )}
-                </div>
-              );
-            })}
+                      <img src={cocktail.image_url} alt={cocktail.name} />
+                      <h2>{cocktail.name}</h2>
+                      <p>{cocktail.description}</p>
+                    </Link>
+                    {user && (
+                      <button
+                        className={
+                          isFavorited ? "favorite-button" : "unfavorite-button"
+                        }
+                        id={isFavorited ? "fav-button" : "unfav-button"}
+                        onClick={() => handleFavorite(cocktail.id)}
+                      >
+                        {isFavorited ? "Favorited!" : "Favorite"}
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,3 +1,9 @@
+/* #card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
 .cocktail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -5,9 +11,26 @@
   padding: 20px;
 }
 
-#list-grid {
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+#creator {
+  margin-left: 90px;
 }
+
+#list-grid {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+/* #list-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+/* .card-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+} */
 
 .cocktail-card {
   /* display: flex;
@@ -22,16 +45,6 @@
   /* color: #000; */
   transition: transform 0.2s ease-in-out, box-shadow 0.5s ease-in-out;
 }
-
-/* #list-card {
-  border: red solid 1px;
-  width: 200px;
-  height: auto;
-}
-
-#list-card img {
-  width: 100%;
-} */
 
 .cocktail-list-header {
   display: flex;
