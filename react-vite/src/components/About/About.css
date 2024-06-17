@@ -274,7 +274,7 @@
   filter: brightness(4);
   font-size: 350px;
   fill: rgba(253, 242, 199, 0.4);
-  z-index: 1;
+  /* z-index: 1; */
 }
 .light-shine3 {
   transform: translate(194px, -197px);
@@ -331,6 +331,13 @@
 }
 
 @media (max-width: 650px) {
+  .icongit-wrapper {
+    z-index: 1;
+  }
+  .icongit-wrapper2 {
+    z-index: 1;
+  }
+
   .about {
     padding: 10px;
   }
