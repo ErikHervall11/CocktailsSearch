@@ -17,7 +17,7 @@ const HomePage = () => {
 
   const ingredientsByCategory = {
     juice: ["lemon", "lime", "orange", "pineapple", "cranberry"],
-    syrup: ["simple", "grenadine", "honey", "raspberry", "ginger", "cinnamon"],
+    syrup: ["simple", "grenadine", "honey", "raspberry", "ginger"],
     liquor: ["vodka", "gin", "rum", "tequila", "whiskey", "vermouth"],
     herbs: ["mint", "basil", "rosemary", "lavender", "cinnamon"],
     misc: ["bitters", "sugar", "cola", "soda", "wine", "sparkling"],

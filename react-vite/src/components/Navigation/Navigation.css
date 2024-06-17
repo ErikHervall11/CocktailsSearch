@@ -88,7 +88,7 @@
   align-items: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .profile-dropdown {
     position: absolute;
     z-index: 1;
@@ -110,11 +110,9 @@
     height: 45px;
   }
 
-  /* .nav-bar li {
-    padding: 0px 3px;
-    
-  } */
   .nav-bar {
     padding: 0px 15px;
+    /* width: 85%;
+    margin: 0px; */
   }
 }
