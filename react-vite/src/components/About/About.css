@@ -329,3 +329,74 @@
 .icongit:hover {
   color: #04353e;
 }
+
+@media (max-width: 650px) {
+  .about {
+    padding: 10px;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+
+  .image-container img {
+    margin-top: -115px;
+  }
+
+  .icongit-wrapper,
+  .icongit-wrapper2 {
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 5px 5px rgba(253, 242, 199);
+  }
+
+  .icongit-wrapper {
+    top: 50%;
+    left: 20%;
+    transform: translate(0, -60%);
+  }
+
+  .icongit-wrapper2 {
+    top: 50%;
+    left: 80%;
+    transform: translate(-100%, -60%);
+  }
+
+  .icongit {
+    font-size: 4rem;
+  }
+
+  .light-bulb,
+  .light-bulb2,
+  .light-bulb3 {
+    width: 5px;
+    box-shadow: 0px 0px 5px 5px rgba(253, 242, 199);
+  }
+
+  .light-bulb {
+    transform: translate(-6px, -179px);
+  }
+
+  .light-bulb2 {
+    transform: translate(97px, -154px);
+  }
+
+  .light-bulb3 {
+    transform: translate(-108px, -154px);
+  }
+
+  .light-shine {
+    transform: translate(-108px, -98px);
+    font-size: 150px;
+  }
+
+  .light-shine2 {
+    transform: translate(-5px, -110px);
+    font-size: 175px;
+  }
+
+  .light-shine3 {
+    transform: translate(97px, -98px);
+    font-size: 150px;
+  }
+}

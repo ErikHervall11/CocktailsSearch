@@ -249,3 +249,26 @@
   background-color: #8f06069d;
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  .cocktail-details {
+    text-align: center;
+    font-size: 0.5em;
+  }
+  #fav-button-details {
+    width: 60%;
+  }
+  #unfav-button-details {
+    width: 60%;
+  }
+  .comments-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 8px 0px;
+  }
+  .edit-delete-buttons {
+    align-items: center;
+    justify-content: center;
+  }
+}

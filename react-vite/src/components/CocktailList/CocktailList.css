@@ -103,3 +103,49 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+@media (max-width: 768px) {
+  #creator {
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  #list-card {
+    width: 70px;
+    height: auto;
+    padding: 10px;
+  }
+
+  #list-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    display: grid;
+    margin-right: 10px;
+  }
+
+  #list-card img {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+
+  #list-card button {
+    font-size: 7px;
+  }
+
+  #list-card h2 {
+    margin-top: -8px;
+    font-size: 0.7em;
+  }
+  #list-card p {
+    font-size: 0.4em;
+    margin-top: -8px;
+  }
+
+  #list-card .unfavorite-button {
+    width: 70%;
+  }
+  #list-card .favorite-button {
+    width: 70%;
+  }
+}

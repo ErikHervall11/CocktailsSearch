@@ -89,3 +89,25 @@
 .signup-form .input-signup-form {
   margin-bottom: 30px;
 }
+
+@media (max-width: 650px) {
+  .signup-form p.error-message {
+    color: red;
+    margin: 5px 0;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    font-size: 8px;
+  }
+  .input-signup-form h5 {
+    font-size: 0.5em;
+    width: 120%;
+    margin-bottom: -25px;
+  }
+  .signup-form h1 {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+}

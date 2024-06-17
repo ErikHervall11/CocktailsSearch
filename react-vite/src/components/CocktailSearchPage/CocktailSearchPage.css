@@ -60,3 +60,13 @@
   color: #fdf2c7;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .search-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.8em;
+  }
+}

@@ -124,6 +124,11 @@
   color: #04353e;
 }
 
+.login-message {
+  margin-top: -300px;
+  margin-bottom: 50px;
+}
+
 @media (max-width: 768px) {
   .homepage {
     flex-direction: column;
@@ -170,9 +175,17 @@
   .cocktail-search-box input {
     width: 120%;
   }
+  .login-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    text-align: center;
+    margin-top: -250px;
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
   .ingredient-list {
     width: 72px;
     display: flex;
@@ -221,5 +234,14 @@
 
   .website-header-home h3 {
     font-size: 16px;
+  }
+
+  .login-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    text-align: center;
+    margin-top: -250px;
   }
 }
