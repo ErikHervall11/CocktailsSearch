@@ -88,7 +88,7 @@
   align-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .profile-dropdown {
     position: absolute;
     z-index: 1;
