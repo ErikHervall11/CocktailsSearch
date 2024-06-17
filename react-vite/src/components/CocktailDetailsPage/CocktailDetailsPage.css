@@ -271,4 +271,14 @@
     align-items: center;
     justify-content: center;
   }
+  .details-textarea {
+    width: 80%;
+  }
+  .comment-space {
+    justify-content: center;
+    align-items: center;
+  }
+  .comment-space button {
+    width: 50%;
+  }
 }
