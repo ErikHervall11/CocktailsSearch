@@ -160,6 +160,10 @@
     padding: 10px;
   }
 
+  #list-grid #list-card {
+    width: 110px;
+  }
+
   #list-grid {
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     display: grid;
