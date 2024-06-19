@@ -22,6 +22,7 @@ const About = () => {
 
   return (
     <div className="about">
+      <audio src="/ambientbarsound.mp3" autoPlay loop />
       <div className="image-container">
         <img src="/erikbar.png" alt="Erik's Bar" />
         <a

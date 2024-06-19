@@ -9,61 +9,61 @@ def seed_users():
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password',
-        first_name='Marnie', last_name='Smith',
+        username='HeyJude', email='judy@aa.io', password='password',
+        first_name='Judy', last_name='Hervall',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password',
-        first_name='Bobbie', last_name='Brown',
+        username='Saman', email='saman@aa.io', password='password',
+        first_name='Saman', last_name='Razavi',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     john = User(
-        username='john', email='john@aa.io', password='password',
-        first_name='John', last_name='Doe',
+        username='JohnnyBravo', email='john@aa.io', password='password',
+        first_name='John', last_name='Dizon',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     jane = User(
-        username='jane', email='jane@aa.io', password='password',
-        first_name='Jane', last_name='Doe',
+        username='TheRealSlimJaney', email='jane@aa.io', password='password',
+        first_name='Jane', last_name='Swingler',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     alice = User(
-        username='alice', email='alice@aa.io', password='password',
-        first_name='Alice', last_name='Wonderland',
+        username='Ernie', email='ernie@aa.io', password='password',
+        first_name='Ernie', last_name='Ernie',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     bob = User(
-        username='bob', email='bob@aa.io', password='password',
-        first_name='Bob', last_name='Builder',
+        username='Bert', email='bert@aa.io', password='password',
+        first_name='Bert', last_name='Bert',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     charlie = User(
-        username='charlie', email='charlie@aa.io', password='password',
-        first_name='Charlie', last_name='Brown',
+        username='MazinMark', email='mark@aa.io', password='password',
+        first_name='Mark', last_name='Bautista',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     dave = User(
-        username='dave', email='dave@aa.io', password='password',
-        first_name='Dave', last_name='Johnson',
+        username='MrBlack', email='tyler@aa.io', password='password',
+        first_name='Tyler', last_name='Black',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
     eve = User(
-        username='eve', email='eve@aa.io', password='password',
-        first_name='Eve', last_name='Smith',
+        username='Jooooosh', email='josh@aa.io', password='password',
+        first_name='Josh', last_name='Peterson',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
-    db.session.add(john)
-    db.session.add(jane)
-    db.session.add(alice)
-    db.session.add(bob)
-    db.session.add(charlie)
-    db.session.add(dave)
-    db.session.add(eve)
+    db.session.add(HeyJude)
+    db.session.add(Saman)
+    db.session.add(JohnnyBranvo)
+    db.session.add(TheRealSlimJaney)
+    db.session.add(Ernie)
+    db.session.add(Bert)
+    db.session.add(MazinMark)
+    db.session.add(MrBlack)
+    db.session.add(Jooooosh)
     db.session.commit()
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
