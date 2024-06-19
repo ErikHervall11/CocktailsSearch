@@ -43,7 +43,7 @@ def seed_users():
         first_name='Mark', last_name='Bautista',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
     )
-    tyle = User(
+    tyler = User(
         username='MrBlack', email='tyler@aa.io', password='password',
         first_name='Tyler', last_name='Black',
         profile_image='https://cocktail-collective.s3.us-west-1.amazonaws.com/bartender.jpg'
