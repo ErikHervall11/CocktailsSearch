@@ -140,7 +140,9 @@ const HomePage = () => {
                 ))}
               </div>
 
-              <h2 className="cocktail-list-header">Most Commented Cocktails</h2>
+              <h2 className="cocktail-list-header" id="cl-header">
+                Most Commented Cocktails
+              </h2>
               <div className="cocktail-grid">
                 {mostCommentedCocktails.slice(0, 2).map((cocktail) => (
                   <CocktailCard key={cocktail.id} cocktail={cocktail} />
