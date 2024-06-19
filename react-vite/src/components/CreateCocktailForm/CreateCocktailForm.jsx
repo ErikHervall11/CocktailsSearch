@@ -75,6 +75,7 @@ const CreateCocktailForm = () => {
       onSubmit={handleSubmit}
       encType="multipart/form-data"
       className="create-cocktail-form"
+      id="create-cocktail-form-id"
     >
       <input
         type="text"
@@ -105,7 +106,7 @@ const CreateCocktailForm = () => {
         className="form-input"
       />
       {ingredients.map((ingredient, index) => (
-        <div key={index} className="ingredient-row">
+        <div key={index} className="ingredient-row" id="ing-row">
           <input
             type="text"
             name="name"

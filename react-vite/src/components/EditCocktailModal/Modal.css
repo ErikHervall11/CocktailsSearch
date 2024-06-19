@@ -207,3 +207,20 @@
 .image-preview-image img {
   border: #04353e solid 2px;
 }
+
+@media (max-width: 768px) {
+  .edit-cocktail-form {
+    font-size: 0.6em;
+  }
+
+  .image-preview-edit-modal {
+    margin-right: 10px;
+  }
+
+  .edit-cocktail-form input {
+    font-size: 0.9em;
+  }
+  .form-row textarea {
+    font-size: 0.9em;
+  }
+}

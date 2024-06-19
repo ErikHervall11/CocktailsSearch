@@ -131,7 +131,9 @@ const HomePage = () => {
           </div>
           <div className="homepage">
             <div className="left-column">
-              <h2 className="cocktail-list-header">Recently Added Cocktails</h2>
+              <h2 className="cocktail-list-header" id="cl-header">
+                Recently Added Cocktails
+              </h2>
               <div className="cocktail-grid">
                 {recentCocktails.slice(0, 2).map((cocktail) => (
                   <CocktailCard key={cocktail.id} cocktail={cocktail} />

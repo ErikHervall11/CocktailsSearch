@@ -100,9 +100,9 @@ const UserProfilePage = () => {
           </Link>
         )}
       </div>
-      <div className="cocktail-grid">
+      <div className="cocktail-grid" id="list-grid">
         {cocktails.map((cocktail) => (
-          <div key={cocktail.id} className="cocktail-card">
+          <div key={cocktail.id} className="cocktail-card" id="list-card">
             <img src={cocktail.image_url} alt={cocktail.name} />
             <h2>{cocktail.name}</h2>
             <p>{cocktail.description}</p>
@@ -131,10 +131,14 @@ const UserProfilePage = () => {
           </div>
         ))}
       </div>
-      <h2>Favorited Cocktails</h2>
-      <div className="cocktail-grid">
+      <h2 id="fav-cocktail-text">Favorited Cocktails</h2>
+      <div className="cocktail-grid" id="list-grid">
         {favorites.map((favorite) => (
-          <div key={favorite.cocktail_id} className="cocktail-card">
+          <div
+            key={favorite.cocktail_id}
+            className="cocktail-card"
+            id="list-card"
+          >
             <Link
               to={`/cocktails/${favorite.cocktail_id}`}
               className="no-underline"
@@ -174,19 +178,20 @@ const UserProfilePage = () => {
           </div>
         ))}
       </div>
-      <h2>Commented Cocktails</h2>
-      <div className="cocktail-grid">
+      <h2 id="comment-cocktail-text">Commented Cocktails</h2>
+      <div className="cocktail-grid" id="list-grid">
         {uniqueCommentedCocktails.map((cocktail) => (
           <Link
             to={`/cocktails/${cocktail.id}`}
             key={cocktail.id}
             className="cocktail-card no-underline"
+            id="list-card"
           >
             <img src={cocktail.image_url} alt={cocktail.name} />
             <h2>{cocktail.name}</h2>
             {/* <p>{cocktail.description}</p> */}
             <div>
-              <div>Your Comment:</div>
+              <div id="comment-on-card">Your Comment:</div>
               <p>
                 {
                   comments.find(

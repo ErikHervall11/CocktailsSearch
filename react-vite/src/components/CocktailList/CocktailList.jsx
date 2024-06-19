@@ -29,6 +29,10 @@ const CocktailList = () => {
     fetchData();
   }, [dispatch]);
 
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   const handleFavorite = async (cocktailId) => {
     const isFavorited = favorites.some(
       (favorite) => favorite.cocktail_id === cocktailId
@@ -54,10 +58,6 @@ const CocktailList = () => {
     }
     return acc;
   }, {});
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
 
   return (
     <div id="card-container">
