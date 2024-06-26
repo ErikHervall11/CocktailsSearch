@@ -14,10 +14,10 @@ Cocktail Collective is a comprehensive web app for cocktail enthusiasts. Users c
 
 ## Screenshots
 
-![Screenshot 1](/capstoneproject/react-vite/public/CCportfolio.png)
-![Screenshot 2](/capstoneproject/react-vite/public/CCportfolio2.png)
-![Screenshot 3](/capstoneproject/react-vite/public/CCportfolio3.png)
-![Screenshot 3](/capstoneproject/react-vite/public/CCportfolio4.png)
+![Screenshot 1](https://cocktail-collective.s3.us-west-1.amazonaws.com/CCportfolio.png)
+![Screenshot 2](https://cocktail-collective.s3.us-west-1.amazonaws.com/CCportfolio2.png)
+![Screenshot 3](https://cocktail-collective.s3.us-west-1.amazonaws.com/CCportfolio3.png)
+![Screenshot 3](https://cocktail-collective.s3.us-west-1.amazonaws.com/CCportfolio4.png)
 
 <!-- ## Installation Instructions -->
 
