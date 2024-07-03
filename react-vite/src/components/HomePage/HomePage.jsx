@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import CocktailCard from "./CocktailCard";
 import "./HomePage.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import cocktailFacts from "./cocktailFacts";
 
 const HomePage = () => {
   const [recentCocktails, setRecentCocktails] = useState([]);
@@ -12,8 +13,14 @@ const HomePage = () => {
   const [selectedIngredients, setSelectedIngredients] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [randomFact, setRandomFact] = useState("");
 
   const user = useSelector((state) => state.session.user);
+
+  const getRandomFact = () => {
+    const randomIndex = Math.floor(Math.random() * cocktailFacts.length);
+    setRandomFact(cocktailFacts[randomIndex]);
+  };
 
   const ingredientsByCategory = {
     juice: ["lemon", "lime", "orange", "pineapple", "cranberry"],
@@ -131,6 +138,17 @@ const HomePage = () => {
           </div>
           <div className="homepage">
             <div className="left-column">
+              <div className="fact-space">
+                <button
+                  onClick={getRandomFact}
+                  id="facts-button"
+                  className="fact-button"
+                >
+                  DID YOU KNOW ?
+                </button>
+              </div>
+              {randomFact && <p className="random-fact">{randomFact}</p>}
+
               <h2 className="cocktail-list-header" id="cl-header">
                 Recently Added Cocktails
               </h2>

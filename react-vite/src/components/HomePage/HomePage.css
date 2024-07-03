@@ -9,6 +9,45 @@
   width: 45%;
 }
 
+.fact-space {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+#cl-header {
+  margin-top: 40px;
+}
+.fact-button {
+  margin: 10px 0;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #04353e;
+  color: #fdf2c7;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.fact-button:hover {
+  background-color: #b4990181;
+  color: #04353e;
+  box-shadow: 0px 0px 10px 10px #f7d200b6;
+}
+
+.random-fact {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #04353e;
+  border-radius: 8px;
+  background-color: #fdf2c7;
+  color: #04353e;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+}
+
 .website-header-home {
   justify-content: center;
   align-items: center;
