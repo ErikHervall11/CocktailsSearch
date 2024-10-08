@@ -1,7 +1,3 @@
-Sure! Here's a formatted README for your GitHub repository:
-
----
-
 # Cocktail Collective
 
 ## Live Site
